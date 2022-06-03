@@ -1,3 +1,5 @@
+@use 'utils' as utils;
+
 html{
     font-size: 100%;
     box-sizing: border-box;
@@ -12,4 +14,11 @@ body{
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: utils.$black-color;
+    color: utils.$white-color;
+}
+
+a, a:visited, a:hover, a:active {
+    color: utils.$white-color;
+    text-decoration: none;
 }
