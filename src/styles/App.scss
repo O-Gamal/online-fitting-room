@@ -1,0 +1,6 @@
+@forward './utilities/boilerplate';
+@use './utilities/utils' as utils;
+
+body {
+    // background-image: utils.$background-image;
+}
