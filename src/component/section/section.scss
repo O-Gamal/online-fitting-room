@@ -1,0 +1,38 @@
+@use '../../styles/utilities/utils' as utils;
+
+.section{
+    min-height: 100vh;
+    width: 70%;
+    max-width:1700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: utils.$white-color;
+
+    .contant{
+        width: 60%;
+        &>p{
+            font-size: 1.9rem;
+            font-weight: 300;
+            margin-bottom: 120px;
+            letter-spacing:1.6px;
+            line-height: 1.3em; 
+        }
+        h1{
+            font-size: 4.2rem;
+            font-weight: utils.$bold-waight;
+            margin-bottom: 80px;
+            background-image: utils.$background-image;
+            background-clip: text;
+            color: transparent;
+        }
+    }
+    .image3d {
+        width: 40%;
+    }
+}
+
+.rev{
+    flex-direction: row-reverse;
+}

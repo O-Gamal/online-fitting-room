@@ -1,0 +1,18 @@
+@use '../../styles/utilities/utils' as utils;
+
+.modal{
+    height: 80vh;
+    border-radius: 30px;
+    .modalHeader{
+        background-image: utils.$background-image;
+        padding:18px 40px;
+        color:utils.$white-color;
+        font-size:24px;
+        font-weight:600;
+        .close{
+            cursor: pointer;
+            padding:0 3px;
+            font-size:28px;
+        }
+    }
+}
