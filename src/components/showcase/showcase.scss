@@ -1,0 +1,32 @@
+@use '../../styles/utilities/utils' as utils;
+
+.showcase{
+    min-height:100vh;
+    text-align:center;
+    color:utils.$white-color;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    .card{
+        width:70%;
+        background-color: utils.$gray-color;
+        border-radius: 30px;
+        padding: 5rem 7rem;
+        h1{
+            font-size: 4.2rem;
+            font-weight:utils.$bold-waight;
+        }
+        span{
+            background-image: utils.$background-image;
+            background-clip: text;
+            color: transparent;
+        }
+        p{
+            margin-top:3rem;
+            font-size: 1.55rem;
+            font-weight: 300;
+            letter-spacing:1.6px;
+            line-height: 1.5em; 
+        }
+    }
+}
