@@ -1,0 +1,62 @@
+@use '../../styles/utilities/utils' as utils;
+
+.mantine-Tabs-body{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+
+.page {
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    .controller{
+        width:40%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .canvas-container {
+        background-color:black;
+        width:60%;
+        height:100%;
+        border-radius: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.formOne{
+
+}
+
+.formTwo{
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    div{
+        display: flex;
+        gap: 25px;
+        input[type="text"]{
+            height: 50px;
+            width: 100%;
+            border-radius: 20px;
+            border: 0px;
+            padding: 5px;
+            font-size: 18px;
+            color: #333;
+            background-color: rgb(211, 211, 211);
+            outline: none;
+        }
+    }
+}

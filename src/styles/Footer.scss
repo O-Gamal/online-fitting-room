@@ -1,0 +1,14 @@
+@use './utilities/utils' as utils;
+
+
+.footer-container{
+    margin-top: 100px;
+    background-color: utils.$gray-color;
+    height: 5vh;
+    text-align: center;
+    color: utils.$white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
