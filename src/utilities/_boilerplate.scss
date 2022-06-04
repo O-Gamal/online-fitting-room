@@ -1,8 +1,9 @@
-@use 'utils' as utils;
+@use 'variables' as utils;
 
 html{
-    font-size: 100%;
+    font-size: utils.$text-3;
     box-sizing: border-box;
+    letter-spacing:1.5px;
 }
 
 
