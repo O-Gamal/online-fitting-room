@@ -1,4 +1,4 @@
-@use './utilities/utils' as utils;
+@use '../../utilities/variables' as utils;
 
 header {
     width: 100%;
@@ -11,8 +11,8 @@ header {
       .logo {
         font-weight: utils.$bold-waight;
         font-family: utils.$secondary-font;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
+        font-size: utils.$text-1;
+        letter-spacing: 4px;
 
         &:hover{
           cursor: pointer;
@@ -20,14 +20,17 @@ header {
       }
       nav {
         button {
-            text-transform: capitalize;
-            font-weight: utils.$bold-waight;
-            background-color: transparent;
-            color: utils.$white-color;
-            font-size: 1rem;
+          font-weight: utils.$bold-waight;
+          font-size: utils.$text-2;
+          color: utils.$white-color;
+          letter-spacing:1.2px;;
+          text-transform: capitalize;
+          background-color: transparent;
 
             &:hover{
               cursor: pointer;
+              text-decoration: underline;
+
             }
         }
         }
@@ -44,7 +47,7 @@ header {
           justify-content: center;
 
           h1{
-              font-size: 7rem;
+              font-size: utils.$header-1;
               font-weight: utils.$extrabold-waight;
               text-align: center;
               

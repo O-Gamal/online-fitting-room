@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/Header.scss';
+import './Header.scss';
 import { Canvas } from '@react-three/fiber'
 import HeaderCanvas from "./HeaderCanvas";
 

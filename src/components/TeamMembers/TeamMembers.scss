@@ -1,5 +1,4 @@
-@use './utilities/utils' as utils;
-
+@use '../../utilities/variables' as utils;
 
 .team-members{
     width: 100%;
@@ -13,7 +12,7 @@
     
 
     .team-title{
-        font-size: 2.0rem;
+        font-size: utils.$header-2;
         font-weight: utils.$bold-waight;
         margin: 50px 0;
         margin-left: utils.$padding-x;
@@ -39,7 +38,7 @@
 
 .box{
 
-    width: 300px;
+    width: 320px;
     height: auto;
     padding: 30px;
     margin-right: 30px;
@@ -74,8 +73,8 @@
 
         p{
             margin-top: 10px;
-            font-size: 0.9rem;
-            color: utils.$white-color;
+            font-size: utils.$text-3;
+            color: utils.$light-gray-color;
             cursor: pointer;
 
             &:hover{

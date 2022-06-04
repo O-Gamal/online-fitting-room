@@ -1,6 +1,6 @@
 import React,{ forwardRef, createRef } from 'react'
 import MemberCard from './MemberCard'
-import '../styles/TeamMembers.scss'
+import './TeamMembers.scss'
 import ScrollContainer from "react-indiana-drag-scroll";
 console.log(ScrollContainer);
 

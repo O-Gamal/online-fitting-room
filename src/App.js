@@ -1,11 +1,11 @@
 import React,{useRef} from 'react';
-import './styles/App.scss';
-import Header from './components/Header';
-import TeamMembers from './components/TeamMembers';
+import Header from './components/Header/Header';
+import TeamMembers from './components/TeamMembers/TeamMembers';
 import Section from './components/section/Section.jsx';
 import Showcase from './components/showcase/Showcase.jsx';
 import PhaseOne from './components/phaseOne/PhaseOne.jsx';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
+import './App.scss';
 
 function App() {
   const teamRef = useRef();

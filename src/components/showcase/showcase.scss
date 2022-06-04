@@ -1,4 +1,4 @@
-@use '../../styles/utilities/utils' as utils;
+@use '../../utilities/variables' as utils;
 
 .showcase{
     min-height:100vh;
@@ -23,7 +23,7 @@
         }
         p{
             margin-top:3rem;
-            font-size: 1.55rem;
+            font-size: utils.$text-2;
             font-weight: 300;
             letter-spacing:1.6px;
             line-height: 1.5em; 
