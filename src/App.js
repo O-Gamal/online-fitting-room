@@ -1,7 +1,7 @@
 import React,{useRef} from 'react';
 import './styles/App.scss';
 import Header from './components/Header';
-import TeamTest from './components/TeamTest';
+import TeamTest from './components/TeamMembers';
 
 function App() {
   const teamRef = useRef();

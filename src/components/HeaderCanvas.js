@@ -8,10 +8,12 @@ import { Html, OrbitControls } from '@react-three/drei'
 
 export default function HeaderCanvas() {
 
-    const meshObj = useRef();
-    useFrame(() => meshObj.current.rotation.y += 0.01);
     const obj = useLoader(OBJLoader, '/models/person.obj')
-
+    const meshObj = useRef();
+    useFrame(() => {
+        meshObj.current.rotation.y += 0.01
+        
+    });
     console.log(useLoader)
     return (
         <>
