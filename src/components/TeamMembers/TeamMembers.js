@@ -1,8 +1,8 @@
-import React,{ forwardRef, createRef } from 'react'
+import React,{ forwardRef, useRef } from 'react'
 import MemberCard from './MemberCard'
 import './TeamMembers.scss'
-import ScrollContainer from "react-indiana-drag-scroll";
-console.log(ScrollContainer);
+import { motion, useMotionValue, useTransform   } from "framer-motion"
+
 
 const members = [
   {
@@ -57,19 +57,24 @@ const members = [
 ]
 
 export default forwardRef(function TeamTest(props,team) {
-  const scrollRef = createRef();
+  const section = useRef()
 
   return (
-
     <section ref={team} className="team-members">
       <div className="team-title">Team</div>
-      <ScrollContainer className="scroll-container" ref={scrollRef} activationDistance={20} >
-        <div className="cards">
-          {members.map(member => (
-            <MemberCard key={member.name} {...member} />
-          ))}
+        <div ref={section} className='cards-container'>
+          <motion.div
+            className="cards" 
+            drag="x"
+            dragConstraints={section}
+            // animate={{x: -3330 + 1000}}
+            transition={{ duration: 5.5 }}
+          >
+            {members.map(member => (
+              <MemberCard key={member.name} {...member} />
+            ))}
+          </motion.div>
         </div>
-      </ScrollContainer>
     </section>
   )
 })
