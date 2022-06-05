@@ -1,14 +1,14 @@
 @use "../../utilities/variables" as utils;
 
 .box {
-    padding: 30px;
+    padding: 40px;
     background-color: utils.$gray-color;
     color: utils.$white-color;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     border-radius: utils.$radius;
-    width: 450px;
+    width: 480px;
   // border-bottom: 12px solid utils.$secondary-color-2;
 
   .img {
@@ -18,8 +18,8 @@
     align-items: center;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: utils.$radius;
       overflow: hidden;
       object-fit: cover;
