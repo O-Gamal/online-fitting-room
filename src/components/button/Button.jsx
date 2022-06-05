@@ -1,9 +1,9 @@
 import React from 'react';
 import './button.scss';
 
-const Button = ({ grad, children, onClick}) => {
+const Button = ({pad, full, children, onClick}) => {
   return (
-    <div className={'btn ' + grad} onClick={onClick}>
+    <div className={'btn '+full} onClick={onClick} style={{paddingTop: pad , paddingBottom: pad}}>
       <p>
         {children} 
       </p>

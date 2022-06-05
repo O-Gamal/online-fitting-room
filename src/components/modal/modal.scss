@@ -2,17 +2,17 @@
 
 .modal{
     height: 80vh;
-    border-radius: 30px;
+    border-radius: utils.$radius;
     .modalHeader{
         background-image: utils.$background-image;
         padding:18px 40px;
         color:utils.$white-color;
-        font-size:24px;
-        font-weight:600;
+        font-size:utils.$text-1;
+        font-weight:utils.$bold-waight;
         .close{
             cursor: pointer;
             padding:0 3px;
-            font-size:28px;
+            font-size:utils.$text-1;
         }
     }
 }

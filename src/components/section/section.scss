@@ -2,25 +2,24 @@
 
 .section{
     min-height: 100vh;
-    width: 70%;
-    max-width:1700px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: utils.$white-color;
+    padding: 0 utils.$padding-x;    
 
     .contant{
         width: 60%;
+        max-width: calc(utils.$max-width*0.6);
         &>p{
-            font-size: 1.9rem;
-            font-weight: 300;
+            font-size: utils.$text-1;
+            font-weight: utils.$regular-waight;
             margin-bottom: 120px;
-            letter-spacing:1.6px;
-            line-height: 1.3em; 
+            line-height: utils.$line-height; 
         }
-        h1{
-            font-size: 4.2rem;
+        &>h1{
+            font-size: utils.$header-2;
             font-weight: utils.$bold-waight;
             margin-bottom: 80px;
             background-image: utils.$background-image;
@@ -30,6 +29,7 @@
     }
     .image3d {
         width: 40%;
+        max-width: calc(utils.$max-width*0.4);
     }
 }
 

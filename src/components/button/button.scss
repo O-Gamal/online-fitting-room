@@ -3,33 +3,33 @@
 .btn {
     padding: 20px 60px;
     display: inline-block;
-    background-image: utils.$white-color;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 40px;
-    p{
-        font-weight: 600;
-        font-size:32px;
-        letter-spacing: 1.2px;
-        background-image: utils.$background-image;
-        background-clip: text;
-        color: transparent;
-    }
-
-}
-
-.grad {
     background-image: utils.$background-image;
+    cursor: pointer;
+    border: 2px solid rgba(0,0,0,0);
+    border-radius: utils.$radius;
     p{
+        font-weight: utils.$bold-waight;
+        font-size:calc(utils.$text-1*1.2);
         color: utils.$white-color;
     }
     &:hover {
-        border-color: utils.$white-color;
+        border-left-color: utils.$secondary-color-2;
+        border-right-color: utils.$secondary-color-1;
+        border-top-color: utils.$secondary-color-1;
+        border-bottom-color: utils.$secondary-color-2;
         background-image: linear-gradient(120deg, #000000 0%, #000000 100%);
         p{
             background-image: utils.$background-image;
             background-clip: text;
             color: transparent;
         }
+    }
+}
+
+.full{
+    width: 100%;
+    text-align: center;
+    p{
+        font-size: utils.$text-3;
     }
 }
