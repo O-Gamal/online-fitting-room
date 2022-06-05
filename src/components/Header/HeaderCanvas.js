@@ -24,9 +24,8 @@ export default function HeaderCanvas() {
                     <h1>Online Fitting Room</h1>
                 </div>
             </Html> */}
-            <fog attach="fog" args={[0x000, 0, 100]} />
             <mesh>
-                <primitive  object={obj} position={[0,-0.6,4.5]} ref={meshObj} />
+                <primitive  object={obj} position={[0,-0.3,4.5]} ref={meshObj} />
             </mesh>
         </>
     );
