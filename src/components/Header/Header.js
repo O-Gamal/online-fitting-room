@@ -18,6 +18,9 @@ const Header = ({teamRef}) => {
                     <button onClick={handleGoToTeam}>Team</button>
                 </nav>
             </div>
+            <div className="title">
+                <h1>Online Fitting Room</h1>
+            </div>
             <div className="header-canvas-container">
                 <Canvas >
                     <HeaderCanvas />

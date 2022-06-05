@@ -1,0 +1,77 @@
+@use "../../utilities/variables" as utils;
+
+.box {
+    padding: 30px;
+    background-color: utils.$gray-color;
+    color: utils.$white-color;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: utils.$radius;
+    width: 450px;
+  // border-bottom: 12px solid utils.$secondary-color-2;
+
+  .img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: utils.$radius;
+      overflow: hidden;
+      object-fit: cover;
+      object-position: top;
+      pointer-events: none
+    }
+  }
+
+  .content {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    strong {
+      font-weight: utils.$bold-waight;
+      font-size: utils.$text-1;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: utils.$text-3;
+      letter-spacing: 1px;
+      color: utils.$light-gray-color;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .btns {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+
+      a {
+        fill: utils.$white-color;
+
+        svg {
+          margin-right: 15px;
+        }
+
+        &:hover {
+          fill: utils.$light-gray-color;
+          transition: all ease 0.2s;
+        }
+      }
+    }
+  }
+}
