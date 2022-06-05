@@ -1,16 +1,20 @@
 import React from 'react';
 import Button from '../button/Button.jsx';
+import Radio from '../radio/Radio.jsx';
+import {motion} from 'framer-motion';
 
 const PageOne = () => {
   return (
     <div className="page">
-        <div className="controller controller-one">
+        <div className="controller">
+          <div>
             <h2>Select your gender</h2>
-            <form className="formOne">
-                <input type="radio" value="Male" name="gender" /> Male
-                <input type="radio" value="Female" name="gender" /> Female
+            <form className="formOne" animate>
+              <Radio id="male" value="male" name="gender" vart='fullW' label="Male"/>
+              <Radio id="female" value="female" name="gender" vart='fullW' label="Female"/>
             </form>
-            <Button grad='grad'>Next</Button>
+            <Button pad={'12px'} full={'full'}>Next</Button>
+          </div>
         </div>
         <div className="canvas-container"></div>
     </div>

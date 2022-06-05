@@ -1,16 +1,13 @@
 import React from 'react'
-import { Tabs } from '@mantine/core';
+import TabInModal from '../tabInModal/TabInModal.jsx';
 import PageOne from './PageOne.jsx';
 import PageTwo from './PageTwo.jsx';
 import './phaseOne.scss';
 
 const PhaseOne = () => {
   return (
-    <Tabs orientation="vertical" variant="pills" style={{width: '100%', height: '100%', alignItems:'center' }}>
-        <Tabs.Tab label="one"><PageOne/></Tabs.Tab>
-        <Tabs.Tab label="two"><PageTwo/></Tabs.Tab>
-    </Tabs>
+    <TabInModal pages={[<PageOne/>,<PageTwo/>]} />
   )
-}
+} 
 
-export default PhaseOne
+export default PhaseOne;

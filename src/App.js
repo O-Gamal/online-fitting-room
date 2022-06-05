@@ -14,9 +14,9 @@ function App() {
     <div className="App">
       <Header teamRef={teamRef} />
       <Showcase />
-      <Section pages={<PhaseOne/>}/>
-      <Section  rev='rev'/>
-      <Section />
+      <Section pages={<PhaseOne/>} heading="3D Human Modeling"/>
+      <Section  rev='rev' heading="Garment Registration and Texture Mapping"/>
+      <Section heading="Size Recommendation"/>
       <TeamMembers ref={teamRef}/>
       <Footer year={2022}/>
     </div>

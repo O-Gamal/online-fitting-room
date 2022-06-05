@@ -1,11 +1,7 @@
-// Text
-
 //weights
 $regular-waight: 300;
 $bold-waight: 600;
 $extrabold-waight: 800;
-
-//Sizes
 
 // Header
 $header-1: 7rem;
@@ -28,11 +24,10 @@ $light-gray-color: #909090;
 $white-color: #fff;
 $secondary-color-1: #ad62f8;
 $secondary-color-2: #f04293;
-
 $background-image: linear-gradient(120deg, $secondary-color-2 0%, $secondary-color-1 100%);
-
 
 // sizing
 $radius: 30px;
 $padding-x: 140px;
-
+$max-width: 1500px;
+$line-height:1.6em;
