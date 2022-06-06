@@ -5,6 +5,7 @@ import Section from './components/section/Section.jsx';
 import Showcase from './components/showcase/Showcase.jsx';
 import PhaseOne from './components/phaseOne/PhaseOne.jsx';
 import Footer from './components/Footer/Footer';
+import ModalTwo from './components/modalTwo/ModalTwo';
 import './App.scss';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <Header teamRef={teamRef} />
       <Showcase />
       <Section pages={<PhaseOne/>} heading="3D Human Modeling"/>
-      <Section  rev='rev' heading="Garment Registration and Texture Mapping"/>
+      <Section pages={<ModalTwo/>} heading="Garment Registration and Texture Mapping" rev='rev'/>
       <Section heading="Size Recommendation"/>
       <TeamMembers ref={teamRef}/>
       <Footer year={2022}/>

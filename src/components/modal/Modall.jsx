@@ -9,7 +9,7 @@ const Modall = ({isOpen, closeHandler, children, heading}) => {
                 <div className="close" onClick={closeHandler}>x</div>
                 <div>{heading}</div>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="modalBody">
                 {children}
             </Modal.Body>
         </Modal>
