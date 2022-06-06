@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../button/Button.jsx';
 import Radio from '../radio/Radio.jsx';
-import {motion} from 'framer-motion';
 
 const PageOne = () => {
   return (
