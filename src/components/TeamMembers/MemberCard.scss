@@ -1,15 +1,29 @@
 @use "../../utilities/variables" as utils;
 
 .box {
-    padding: 40px;
+    background:  border-box;
+    padding: 40px 60px;
     background-color: utils.$gray-color;
     color: utils.$white-color;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: utils.$radius;
-    width: 480px;
+    width: 600px;
+    height: 100%;
   // border-bottom: 12px solid utils.$secondary-color-2;
+
+  &:hover {
+    background: linear-gradient(utils.$gray-color, utils.$gray-color) padding-box,
+                utils.$background-image border-box;
+    border: 5px solid transparent;
+    
+    // strong{
+    //   background-image: utils.$background-image;
+    //   background-clip: text;
+    //   color: transparent;
+    // }
+  }
 
   .img {
     display: flex;
@@ -18,8 +32,8 @@
     align-items: center;
 
     img {
-      width: 120px;
-      height: 120px;
+      width: 180px;
+      height: 180px;
       border-radius: utils.$radius;
       overflow: hidden;
       object-fit: cover;
@@ -37,13 +51,14 @@
 
     strong {
       font-weight: utils.$bold-waight;
-      font-size: utils.$text-1;
+      font-size: utils.$header-4;
       margin-bottom: 5px;
+      
     }
 
     p {
-      margin-bottom: 15px;
-      font-size: utils.$text-3;
+      margin-bottom: 6%;
+      font-size: utils.$text-2;
       letter-spacing: 1px;
       color: utils.$light-gray-color;
 

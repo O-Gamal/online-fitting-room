@@ -3,7 +3,7 @@ import './section.scss'
 import Button from '../button/Button.jsx';
 import Modall from '../modal/Modall.jsx';
 
-const Section = ({rev, pages, heading}) => {
+const Section = ({rev, pages, heading, image}) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const openHandler = () => setIsOpen(true);
@@ -17,7 +17,7 @@ const Section = ({rev, pages, heading}) => {
             <Button grad='grad' onClick={openHandler}>Demo</Button>
             <Modall closeHandler={closeHandler} isOpen={isOpen} heading={heading}>{pages}</Modall>
         </div>
-        <div className="image3d"></div>
+        <div className="image3d"><img src={image} /></div>
     </div>
   )
 }

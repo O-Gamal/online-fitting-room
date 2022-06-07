@@ -15,9 +15,9 @@ function App() {
     <div className="App">
       <Header teamRef={teamRef} />
       <Showcase />
-      <Section pages={<PhaseOne/>} heading="3D Human Modeling"/>
-      <Section pages={<ModalTwo/>} heading="Garment Registration and Texture Mapping" rev='rev'/>
-      <Section heading="Size Recommendation"/>
+      <Section pages={<PhaseOne/>} heading="3D Human Modeling" image='images/smpl-v2.png'/>
+      <Section pages={<ModalTwo/>} heading="Garment Registration and Texture Mapping" rev='rev' image='images/shirt-v2.png'/>
+      <Section heading="Size Recommendation" image='images/tape.png'/>
       <TeamMembers ref={teamRef}/>
       <Footer year={2022}/>
     </div>

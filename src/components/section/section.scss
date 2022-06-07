@@ -7,7 +7,10 @@
     justify-content: center;
     align-items: center;
     color: utils.$white-color;
-    padding: 0 utils.$padding-x;    
+    padding: 0 utils.$padding-x;
+    user-select: none;
+    
+
 
     .contant{
         width: 60%;
@@ -30,9 +33,36 @@
     .image3d {
         width: 40%;
         max-width: calc(utils.$max-width*0.4);
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+
+        img{
+            width: 150%;
+            height: 150%;
+            object-fit: cover;
+            object-position: top;
+            // filter: drop-shadow(10px 0 50px utils.$white-color);
+            filter: drop-shadow(0 0 0.1rem utils.$secondary-color-2);
+
+
+            
+        }
     }
 }
 
 .rev{
     flex-direction: row-reverse;
+
+    .image3d{
+        margin-right: 50px;
+    }
+    
+    img{
+        width: 80% !important;
+        height: 80% !important;
+
+        margin-right: 20%;
+        // transform: rotateY(180deg)
+    }
 }
