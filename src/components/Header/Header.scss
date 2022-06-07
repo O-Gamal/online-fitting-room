@@ -1,5 +1,7 @@
 @use "../../utilities/variables" as utils;
 
+
+
 header {
   width: 100%;
   height: 100vh;
@@ -43,20 +45,20 @@ header {
     width: 100%;
     max-width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: -2;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    
+    // box-shadow: black 0px 0px 10px;
 
     h1 {
       font-size: utils.$header-1;
       font-weight: utils.$extrabold-waight;
       text-align: center;
-
-      background-image: utils.$background-image;
-      background-clip: text;
-      color: transparent;
-      z-index: -1;
+      text-shadow: 10px 10px 10px #000000;
+      // background-image: utils.$background-image;
+      // background-clip: text;
+      color: utils.$white-color;
     }
   }
 

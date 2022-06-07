@@ -14,22 +14,28 @@
     font-weight: utils.$bold-waight;
     margin: 50px 0;
     margin-left: utils.$padding-x;
+    background-image: utils.$background-image;
+    background-clip: text;
+    color: transparent;
   }
 
   .cards-container{
     width: 100%;
     padding-left: utils.$padding-x;
+    height: 40%;
+
     
 
     
     
     .cards {
         padding: 0 20px;
-        width: 3500px;
+        width: 4500px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         cursor: grab;
+        height: 100%;
     }
   }
 
