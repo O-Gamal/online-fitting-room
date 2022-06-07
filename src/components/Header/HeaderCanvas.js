@@ -11,6 +11,7 @@ import { motion } from 'framer-motion'
 export default function HeaderCanvas() {
 
     // const obj = useLoader(OBJLoader, '/models/smplMale.obj')
+
     const { nodes, material } = useGLTF('/models/smpl.glb')
     console.log(nodes);
     // useMemo(() => {

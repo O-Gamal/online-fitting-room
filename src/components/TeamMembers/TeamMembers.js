@@ -66,8 +66,12 @@ export default forwardRef(function TeamTest(props,team) {
           <motion.div
             className="cards" 
             drag="x"
+            
+            animate={{x: [-2800, 0]}}
+            transition={{yoyo: Infinity, duration: 15, type: 'just'}}
             dragConstraints={section}
             dragTransition={{ bounceStiffness: 80, bounceDamping: 20 }}
+            
             dragElastic={0.1}
           >
             {members.map(member => (

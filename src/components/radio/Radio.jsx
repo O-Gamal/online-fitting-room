@@ -1,6 +1,7 @@
 import React from 'react';
 import './radio.scss';
 
+
 const Radio = ({label, id, width, vart, ...props}) => {
   return (
     <div className={"radioo "+vart} >
