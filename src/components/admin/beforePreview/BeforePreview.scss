@@ -1,0 +1,20 @@
+@use '../../../utilities/variables' as utils;
+
+.beforePreview{
+
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:50px;
+    
+    &>h2 {
+        font-size: calc(utils.$header-3 * 1.2);
+    }
+    .beforePreview-btns{
+        width:380px;
+    }
+
+}
