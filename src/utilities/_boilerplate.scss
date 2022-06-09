@@ -3,7 +3,7 @@
 html{
     font-size: utils.$text-3;
     box-sizing: border-box;
-    letter-spacing:1.2px;
+    // letter-spacing:1.2px;
     overflow-x: hidden;
 }
 
@@ -18,6 +18,7 @@ body{
     font-family: utils.$primary-font;
     margin: 0;
     padding: 0;
+    text-align: center;
     background-color: utils.$black-color;
     color: utils.$white-color;
 }
