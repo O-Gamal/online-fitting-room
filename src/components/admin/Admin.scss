@@ -1,0 +1,39 @@
+@use '../../utilities/variables' as utils;
+
+
+.admin-container{
+    color: utils.$black-color;
+    background-color: utils.$white-color;
+    width: 90%;
+    height: 85vh;
+    border-radius: utils.$radius;
+    overflow: hidden;
+
+    .admin-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 7vh;
+        padding: 0 30px;
+        font-size: utils.$text-1;
+        font-weight: utils.$bold-waight;
+        color: utils.$white-color;
+        background-image: utils.$background-image;
+
+        .material-icons{
+            font-size:utils.$header-4;
+            cursor: pointer;
+            &:hover{
+                color: utils.$light-gray-color;
+            }
+        }
+    }
+
+    .admin-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100% - 7vh);
+    }
+}
