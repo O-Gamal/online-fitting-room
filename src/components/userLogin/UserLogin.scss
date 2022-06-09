@@ -1,0 +1,22 @@
+@use '../../utilities/variables' as utils;
+
+.login-container{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .login-title{
+        margin: 20px 0;
+    }
+
+    .login-button{
+        color: utils.$white-color;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        font-size: utils.$text-1;
+    }
+    
+}

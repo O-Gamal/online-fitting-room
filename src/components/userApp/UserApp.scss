@@ -1,0 +1,53 @@
+@use '../../utilities/variables' as utils;
+
+
+.app-container{
+    color: utils.$black-color;
+    background-color: utils.$white-color;
+    width: 94%;
+    height: 86%;
+    border-radius: utils.$radius;
+    h2{
+        margin: 20px 0;
+    }
+
+    .app-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 6vh;
+        padding: 10px 30px;
+        font-size: utils.$text-1;
+        font-weight: utils.$bold-waight;
+        color: utils.$white-color;
+        background-image: utils.$background-image;
+        background-size: cover;
+        border-top-left-radius: utils.$radius;
+        border-top-right-radius: utils.$radius;
+
+
+        ul{
+            list-style: none;
+            display: flex;
+
+            li{
+
+                margin: 0 10px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                .material-icons{
+                    font-size: utils.$header-4;
+
+                    &:hover{
+                        color: utils.$light-gray-color;
+                    }
+                }
+            }
+        }
+    }
+}

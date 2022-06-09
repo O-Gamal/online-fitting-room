@@ -1,0 +1,68 @@
+@use '../../utilities/variables' as utils;
+
+
+.intro-container{
+    color: utils.$black-color;
+
+    h2{
+        margin: 20px 0;
+    }
+
+
+    .back-btn{
+        background: none ;
+        background-color: utils.$black-color;
+
+        &:hover{
+            background-color: utils.$white-color;
+            border: 3px solid utils.$black-color;
+            p{
+                color: utils.$black-color;
+            }
+            
+        }
+    }
+
+    .radio-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 10px 0;
+        width: 100%;
+
+        .radio-btn{
+            width: 30%;
+            margin: 10px 0;
+        }
+
+        
+    }
+
+    .measurments{
+        .radio-btn{
+            width: 48%;
+        }
+    }
+
+    .measurements-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 10px 0;
+        width: 100%;
+
+
+        input{
+            width: 48%;
+        } 
+    }
+    
+
+}
+
+.dropzone{
+    margin: 10px 0;
+}
+
