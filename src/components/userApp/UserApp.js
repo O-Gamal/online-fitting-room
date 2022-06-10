@@ -25,7 +25,8 @@ export default function UserApp({name}) {
                 <nav>
                     <ul>
                         <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>
-                        <li><Link to='/'><i className="material-icons">home</i></Link></li>
+                        { next === '' && <li><Link to='/'><i className="material-icons">home</i></Link></li>}
+                        { next !== '' && <li><Link to='/user/app'><i onClick={()=>setNext('')} className="material-icons">home</i></Link></li>}
                     </ul>
                 </nav>
             </div>
