@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../../utilities/button/Button'
 import Input from '../../utilities/input/Input'
+import { motion } from 'framer-motion'
 import './UserRegister.scss'
 
 export default function UserRegister({setRegPage, regPage}) {
