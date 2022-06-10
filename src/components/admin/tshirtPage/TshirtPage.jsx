@@ -3,15 +3,18 @@ import React, { useState } from 'react';
 import './TshirtPage.scss';
 import { Group, Text} from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
-import Button from '../../../utilities/button/Button'
-import Input from '../../../utilities/input/Input'
+import Button from '../../../utilities/button/Button';
+import Input from '../../../utilities/input/Input';
+import { useDispatch } from 'react-redux';
+import { setPage} from '../../../states/admin.js';
 
-const TshirtPage = ({setPage}) => {
+const TshirtPage = () => {
 
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
+  const dispatch = useDispatch();
+
   const dropzoneChildren = (DropzoneStatus) => (
-    
     <Group position="center" style={{ minHeight: 150, pointerEvents: 'none', minWidth:400 }}>
       <div>
         <Text size="xl" inline>
@@ -55,8 +58,8 @@ const TshirtPage = ({setPage}) => {
           </div>
         </div>
         <div className="TshirtPage-btns">
-          <Button onClick={()=>setPage(0)}  pad={12} full='blk'>Back</Button>
-          <Button onClick={()=>setPage(2)}  pad={12}>Add</Button>
+          <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
+          <Button onClick={()=>dispatch(setPage(2))}  pad={12}>Add</Button>
         </div>
     </div>
   )

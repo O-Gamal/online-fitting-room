@@ -5,12 +5,13 @@ import Button from '../../utilities/button/Button'
 import Radio from '../../utilities/radio/Radio'
 import { Chips, Chip } from '@mantine/core';
 import { NativeSelect } from '@mantine/core';
-import Input from '../../utilities/input/Input'
+import Input from '../../utilities/input/Input';
+import { useDispatch} from 'react-redux';
+import {setFitPreference, setSkinTone} from '../../states/user.js';
 
 export default function Intro2({regPage, setRegPage, setMeasureType}) {
 
-    const [preference, setPreference] = useState('Perfect');
-    const [skinTone, setSkinTone] = useState('White');
+    const dispatch = useDispatch();
     const [measurementsType, setMeasurementsType] = useState('Manual');
 
     const handleNext = () => {
@@ -31,13 +32,13 @@ export default function Intro2({regPage, setRegPage, setMeasureType}) {
             <h2 className='register-title'>Select Your Fit Preference</h2>
             <div className='radio-container'>
                 {fitPreferences.map((preference, index) => {
-                    return <Radio vart='radio-btn' key={index} label={preference} name='fit' value={preference} onChange={() => setPreference(preference)}/>
+                    return <Radio vart='radio-btn' key={index} label={preference} name='fit' value={preference} onChange={() => dispatch(setFitPreference(preference))}/>
                 })}
             </div>
             <h2 className='register-title'>Select Your Skin tone</h2>
             <div className='radio-container skin-tone'>
                 {skinTones.map((tone, index) => {
-                    return <Radio vart='rnd' key={index} label={tone} name='skin' color='red' value={tone} onChange={() => setSkinTone(tone)}/>
+                    return <Radio vart='rnd' key={index} label={tone} name='skin' color='red' value={tone} onChange={() => dispatch(setSkinTone(tone))}/>
                 })}
             </div>
             <h2 className='register-title'>Body Measurements</h2>
