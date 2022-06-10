@@ -7,6 +7,8 @@ import Button from '../../../utilities/button/Button';
 import Input from '../../../utilities/input/Input';
 import { useDispatch } from 'react-redux';
 import { setPage} from '../../../states/admin.js';
+import DropZone from '../../../utilities/dropzone/DropZone';
+
 
 const TshirtPage = () => {
 
@@ -33,28 +35,8 @@ const TshirtPage = () => {
         <div className="TshirtPage-dropZone">
           <Input className='TshirtPage-input' placeholder='Name' />
           <div className="TshirtPage-drops">
-            <Dropzone
-              loading={false}
-              className='dropzone'
-              accept={IMAGE_MIME_TYPE}
-              radius={30}
-              onDrop={(file) => setImage1(file[0])}
-              onReject={(file) => console.log('rejected files', file[0])}
-              multiple={false}
-            >
-              {(status) => dropzoneChildren(status)}
-            </Dropzone>
-            <Dropzone
-              loading={false}
-              className='dropzone'
-              accept={IMAGE_MIME_TYPE}
-              radius={30}
-              onDrop={(file) => setImage2(file[0])}
-              onReject={(file) => console.log('rejected files', file[0])}
-              multiple={false}
-            >
-              {(status) => dropzoneChildren(status)}
-            </Dropzone>
+            <DropZone />
+            <DropZone />
           </div>
         </div>
         <div className="TshirtPage-btns">

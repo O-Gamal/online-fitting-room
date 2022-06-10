@@ -1,0 +1,41 @@
+@use '../../utilities/variables' as utils;
+
+
+.dropzone{
+    margin: 10px 0;
+    background-color: utils.$light-gray-color;
+}
+
+.uploaded-image-container{
+    width: 100%;
+    border-radius: utils.$radius;
+    border: 3px solid utils.$light-gray-color;
+
+    .uploaded-image{
+        padding: 10px 10px 0 10px;
+        width: 100%;
+        max-height: 30vh;
+        border-radius: utils.$radius;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .remove-btn{
+        background: none ;
+        margin: 0;
+
+        .material-icons{
+            font-size: 30px;
+            width: 100%;
+            color: red;
+            padding: 5px;
+            background-color: utils.$light-gray-color;
+            font-weight: utils.$bold-waight;
+            border-radius: utils.$radius;
+            &:hover{
+
+                color: utils.$gray-color;
+            }
+        }
+    }
+}

@@ -41,7 +41,7 @@ export default function Rating({garment, size, setNext, setDeal}) {
             <h2>You have purchased</h2>
             <h1>{garment} with size {size}</h1>
         </motion.div>
-        <motion.p layout transition={{ type:'tween', duration: 0.1 }} className='rate' onClick={()=> setShowRating(!showRating)}> { showRating ? 'Cancel Rating' : 'Rate the product'} </motion.p>
+        <motion.p layout transition={{ type:'tween', duration: 0.1 }} className='rate' onClick={()=> setShowRating(!showRating)}> { showRating ? 'Cancel Rating' : 'Rate the Product Size'} </motion.p>
         {showRating && <Rate setNext={setNext} setDeal={setDeal}/>}
         </AnimatePresence>
         <motion.div layout transition={{ duration: 0.1 }} className='rating-buttons'>
