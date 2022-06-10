@@ -5,7 +5,7 @@ import { OrbitControls } from '@react-three/drei';
 import Button from '../../../utilities/button/Button';
 import './Preview.scss';
 
-export default function Preview({setNext}) {
+export default function Preview() {
 
     const [pose, setPose] = useState(0);
     

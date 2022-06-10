@@ -4,20 +4,31 @@ import Button from '../../utilities/button/Button'
 import { Link } from 'react-router-dom';
 import Input from '../../utilities/input/Input'
 import DropZone from '../../utilities/dropzone/DropZone';
-import './Intro.scss'
+import './Intro.scss';
+import {useSelector, useDispatch} from 'react-redux';
+import {setMeasurements} from '../../states/user.js';
 
 
 function Manual(){
 
-  const measurements = ['height', 'weight', 'chest', 'waist', 'hips', 'arm length', 'inseam', 'neckline']
+  const Measurements = ['height', 'weight', 'chest', 'waist', 'hips', 'arm_length', 'inseam', 'neckline'];
+
+  const {measurements} = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   return(
       <>
         <h2>Enter Your Body Measurements:</h2>
         <div className='measurements-container'>
-          {measurements.map(measurement => {
-            return <Input className='measure-btn' key={measurement} placeholder={measurement}/>
-          })}
+          {Measurements.map(measurement => 
+             <Input 
+             className='measure-btn' 
+             key={measurement} 
+             placeholder={measurement} 
+             value={measurements[measurement]} 
+             onChange={e => dispatch(setMeasurements({...measurements, [measurement] : e.target.value}))}
+             />
+          )}
         </div>
       </>
   )

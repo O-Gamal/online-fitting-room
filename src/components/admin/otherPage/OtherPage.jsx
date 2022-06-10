@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { ColorInput } from '@mantine/core';
 import Button from '../../../utilities/button/Button';
 import Input from '../../../utilities/input/Input';
-import './OtherPage.scss'
+import './OtherPage.scss';
+import { useDispatch } from 'react-redux';
+import { setPage} from '../../../states/admin.js';
 
-const OtherPage = ({setPage}) => {
 
-const [color, setColor] = useState('');
+const OtherPage = () => {
+
+  const [color, setColor] = useState('');
+  const dispatch = useDispatch()
 
   return (
     <div className="TshirtPage">
@@ -24,8 +28,8 @@ const [color, setColor] = useState('');
             />
         </div>
         <div className="TshirtPage-btns">
-            <Button onClick={()=>setPage(0)}  pad={12} full='blk'>Back</Button>
-            <Button onClick={()=>setPage(2)}  pad={12}>Add</Button>
+            <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
+            <Button onClick={()=>dispatch(setPage(2))}  pad={12}>Add</Button>
         </div>
     </div>
   )
