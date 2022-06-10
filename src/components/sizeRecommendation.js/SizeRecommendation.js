@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import items from '../../utilities/items'
 import Button from '../../utilities/button/Button'
+import { Tooltip } from '@mantine/core';
 import { motion } from 'framer-motion'
 import './SizeRecommendation.scss'
 
 
-export default function SizeRecommendation({setNext}) {
+export default function SizeRecommendation({setNext, setGarment, garment}) {
 
-  const [selectedGarment, setSelectedGarment] = useState('');
 
   return (
     <div className='size-rec-container'>
@@ -17,15 +17,23 @@ export default function SizeRecommendation({setNext}) {
       <div className='items-container'>
         {items.map((item, index) => {
           return (
-            <motion.div 
-              className= {selectedGarment === item.id ? 'item-container selected' : 'item-container'}
+            <Tooltip
               key={index}
-              whileHover={{ scale: 1.03  ,transition: { duration: 0.2 } }}
-              onClick={e => setSelectedGarment(item.id)}
+              withArrow
+              label={item.name}
+              transition="fade"
+              transitionDuration={300}
+              openDelay={500}
+            >
+            <motion.div 
+              className= {garment === item.name ? 'item-container selected' : 'item-container'}
+              whileHover={{ scale: 1.1  ,transition: { duration: 0.3 } }}
+              onClick={e => setGarment(item.name)}
             >
               <img className='item-image' src={item.image} alt={item.name}/>
               {/* <div className='item-name'>{item.name}</div> */}
             </motion.div>
+            </Tooltip>
           )
         })}
       </div>
