@@ -3,31 +3,31 @@
 
 .gar-type-container{
     display: block;
-    padding: 8vh 0;
+    padding: 8vh 6vw;
     overflow: hidden !important;
+    width: 100%;
     
     .gar-type-body{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        padding: 3% 3%;
-        border-radius: utils.$radius2;
-        height: 100%;
+        margin-top: 5%;
 
         .garments{
             margin: 10px 0;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-around ;
+            width: 100%;
+            
 
             img{
                 background-color: utils.$light-gray-color;
                 border-radius: utils.$radius;
                 padding: 50px;
-                width: 20%;
-                height: 20%;
+                max-width: 280px;
+                max-width: 280px;
                 cursor: pointer;
 
                 &:hover{
@@ -57,7 +57,7 @@
 
             .gar-type-btn{
                 width: 45%;
-               cursor: pointer;
+                cursor: pointer;
 
                 &:hover{
                     background-color: utils.$white-color;
