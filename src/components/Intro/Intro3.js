@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { useState } from 'react'
 import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
 import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
@@ -81,9 +82,9 @@ export default function Intro3({measureType, setRegPage, regPage}) {
     <div className='intro-container'>
       {measureType === 'Manual' ? <Manual/> : <UploadPhoto/>} 
       <Link to='/user/app'>
-        <Button> Register </Button>
+        <Button pad={8}> Register </Button>
       </Link>
-      <Button full='back-btn' onClick={handleBack}> Back </Button>
+      <Button full='blk' pad={8} onClick={handleBack}> Back </Button>
       
     </div>
   )

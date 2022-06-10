@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import React, { useState } from 'react';
 import './TshirtPage.scss';
 import { Group, Text} from '@mantine/core';
@@ -54,8 +55,8 @@ const TshirtPage = ({setPage}) => {
           </div>
         </div>
         <div className="TshirtPage-btns">
-          <Button onClick={()=>setPage(0)} full='full' pad={12}>Back</Button>
-          <Button onClick={()=>setPage(2)} full='full' pad={15}>Add</Button>
+          <Button onClick={()=>setPage(0)}  pad={12} full='blk'>Back</Button>
+          <Button onClick={()=>setPage(2)}  pad={12}>Add</Button>
         </div>
     </div>
   )

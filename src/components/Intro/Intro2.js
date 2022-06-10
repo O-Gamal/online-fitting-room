@@ -1,11 +1,11 @@
+/* eslint-disable */ 
 import React, { useState } from 'react'
-import { NativeSelect } from '@mantine/core';
 import './Intro.scss'
 import Button from '../../utilities/button/Button'
-import Input from '../../utilities/input/Input'
 import Radio from '../../utilities/radio/Radio'
 import { Chips, Chip } from '@mantine/core';
-
+import { NativeSelect } from '@mantine/core';
+import Input from '../../utilities/input/Input'
 
 export default function Intro2({regPage, setRegPage, setMeasureType}) {
 
@@ -37,7 +37,7 @@ export default function Intro2({regPage, setRegPage, setMeasureType}) {
             <h2 className='register-title'>Select Your Skin tone</h2>
             <div className='radio-container skin-tone'>
                 {skinTones.map((tone, index) => {
-                    return <Radio vart='radio-btn' key={index} label={tone} name='skin' value={tone} onChange={() => setSkinTone(tone)}/>
+                    return <Radio vart='rnd' key={index} label={tone} name='skin' color='red' value={tone} onChange={() => setSkinTone(tone)}/>
                 })}
             </div>
             <h2 className='register-title'>Body Measurements</h2>
@@ -46,8 +46,8 @@ export default function Intro2({regPage, setRegPage, setMeasureType}) {
                     return <Radio vart='radio-btn' key={index} label={type} name='measurements' value={type} onChange={() => setMeasurementsType(type)}/>
                 })}
             </div>
-            <Button onClick={handleNext}> Next </Button>
-            <Button full='back-btn' onClick={handleBack}> Back </Button>
+            <Button onClick={handleNext} pad={8}> Next </Button>
+            <Button onClick={handleBack} pad={8} full='blk'> Back </Button>
         </div>
     )
 }
