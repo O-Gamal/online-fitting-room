@@ -1,11 +1,12 @@
 import React from 'react'
 import { Tabs } from '@mantine/core';
+import { motion } from 'framer-motion';
 import UserLogin from '../userLogin/UserLogin';
 import UserRegister from '../userRegister/UserRegister';
 
 export default function Intro1({setRegPage, regPage}) {
   return (
-    <>
+    <motion.div className='intro-container'>
         <Tabs 
             variant="pills" 
             position="center" 
@@ -23,10 +24,10 @@ export default function Intro1({setRegPage, regPage}) {
                 <UserLogin />
             </Tabs.Tab>
 
-            <Tabs.Tab label="Register" tabKey={1} style={{fontSize: '1.2rem'}}>
+            <Tabs.Tab  label="Register" tabKey={1} style={{fontSize: '1.2rem'}}>
                 <UserRegister setRegPage={setRegPage} regPage={regPage}/>
             </Tabs.Tab>
         </Tabs>
-    </>
+    </motion.div>
   )
 }

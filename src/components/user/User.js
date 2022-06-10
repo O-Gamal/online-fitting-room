@@ -11,7 +11,7 @@ export default function User() {
   const [measureType, setMeasureType] = useState('Manual')
 
   return (
-    <motion.div layout className='user-container'>
+    <motion.div layoutId='animation' layout className='user-container'>
         {regPage === 1 && <Intro1 regPage={regPage} setRegPage={setRegPage}/>}
         {regPage === 2 && <Intro2 setMeasureType={setMeasureType} regPage={regPage} setRegPage={setRegPage}/>}
         {regPage === 3 && <Intro3 measureType={measureType} regPage={regPage} setRegPage={setRegPage}/>}

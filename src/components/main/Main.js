@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import './Main.scss'
 
 export default function Main() {
   return (
-    <div className='main-container'>
+    <motion.div layoutId='animation' className='main-container'>
         <Link className='nav admin' to='/admin'>
                 <h2>Admin Side</h2>
         </Link>
@@ -12,6 +13,6 @@ export default function Main() {
         <Link className='nav user' to='/user'>
             <h2>User Side</h2>
         </Link>
-    </div>
+    </motion.div>
   )
 }

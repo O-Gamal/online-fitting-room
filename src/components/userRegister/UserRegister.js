@@ -1,9 +1,11 @@
 import React from 'react'
 import Button from '../../utilities/button/Button'
 import Input from '../../utilities/input/Input'
+import { motion } from 'framer-motion';
 import './UserRegister.scss';
 import {setUser} from '../../states/user.js';
 import {useSelector, useDispatch} from 'react-redux';
+
 
 export default function UserRegister({setRegPage, regPage}) {
 

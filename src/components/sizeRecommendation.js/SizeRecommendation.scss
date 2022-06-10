@@ -17,38 +17,29 @@
 
 .items-container{
 
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84%;
     height: 50%;
 
     .item-container{
-        background-color: utils.$light-gray-color;
         border-radius: utils.$radius;
-
+        cursor: pointer;
     }
 
     .item-image{
-        width: 100%;
-        height: 100%;
+        width: 90%;;
         border-radius: utils.$radius;
     }
 
-    // .item-name{
-    //     font-size: utils.$text-2;
-    //     font-weight: bold;
-    //     text-align: center;
-    //     margin-top: 10px;
-    // }
 }
 
 .btns-container{
     display: flex;
     justify-content: space-around;
     width: 80%;
-    margin-top: 5%;
-
+    margin-top: 3%;
     .btn{
         width: 45%;
         cursor: pointer;

@@ -1,1 +1,101 @@
 @use '../../utilities/variables' as utils;
+
+
+.recommendation-item-container{
+    width: 86vw;
+    height: 80%;
+    display: flex;
+
+
+    .right{
+        width: 50%;
+    }
+
+    .left{
+        width: 50%;
+        padding: 3%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        .size{
+            background-color: utils.$light-gray-color;
+            padding: 5%;
+            border-radius: utils.$radius;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            cursor: pointer;
+
+            p{
+                text-decoration: underline;
+            }
+
+            .radio-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 60%;
+                height: 100%;
+
+                .radio-btn{
+                    width: fit-content;
+                    margin: 0 10px;
+                    padding: 8px;
+                    border-radius: utils.$radius;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                .selected{
+                    background: utils.$black-color;
+                    font-weight: utils.$bold-waight;
+                    color: utils.$white-color;
+                    width: 100px;
+                    border: none;
+                }
+            }
+        }
+
+
+    }
+}
+
+.canvas-container {
+    position: relative;
+    border-radius: utils.$radius;
+    background-color: utils.$black-color;
+    height: 100%;
+    width: 100%;
+        
+
+    .pose-btns {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 14%;
+      padding: 10px;
+    }
+
+    .pose-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: utils.$radius3;
+        margin: 0 5px;
+        background: utils.$light-gray-color;
+  
+        P {
+          color: utils.$black-color;
+          font-weight: utils.$extrabold-waight;
+        }
+  
+        &:hover {
+          background: utils.$white-color;
+          width: 51px;
+          height: 51px;
+        }
+      }
+    }
