@@ -1,0 +1,53 @@
+@use "../../../utilities/variables" as utils;
+
+
+.admin-preview{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  .preview-container {
+    width: 80%;
+    height: 80%;
+    border-radius: utils.$radius;
+
+    .canvas-container {
+      position: relative;
+      border-radius: utils.$radius;
+      background-color: utils.$black-color;
+      height: 100%;
+      display: flex;
+      width: 100%;   
+
+      .pose-btns {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 14%;
+        padding: 10px;
+      }
+
+      .pose-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: utils.$radius3;
+        margin: 0 5px;
+        background: utils.$light-gray-color;
+
+        P {
+          color: utils.$black-color;
+          font-weight: utils.$extrabold-waight;
+        }
+
+        &:hover {
+          background: utils.$white-color;
+          width: 54px;
+          height: 54px;
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+}
