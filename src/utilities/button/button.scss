@@ -2,8 +2,7 @@
 
 .btn {
     display: inline-block;
-    background: utils.$background-image padding-box,
-                    utils.$background-image border-box;
+    background: utils.$background-image padding-box, utils.$background-image border-box;
     border: 3px solid transparent;
     cursor: pointer;
     border-radius: utils.$radius2;
@@ -18,10 +17,8 @@
         text-align: center;
     }
     &:hover {
-        background: linear-gradient(utils.$white-color, utils.$white-color) padding-box,
-                    utils.$background-image border-box;
+        background: linear-gradient(utils.$white-color, utils.$white-color) padding-box, utils.$background-image border-box;
         border: 3px solid transparent;
-      
         p{
             background-image: utils.$background-image;
             background-clip: text;
@@ -30,11 +27,6 @@
     }
 }
 
-.full{
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-    p{
-        font-size: utils.$text-3;
-    }
+.blk{
+    background: black;
 }
