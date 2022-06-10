@@ -1,5 +1,6 @@
 import React ,{useState} from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Admin.scss';
 import GarmentType from './garmentType/GarmentType.jsx';
 import TshirtPage from './tshirtPage/TshirtPage.jsx';
@@ -14,7 +15,7 @@ export default function Admin(){
   const [page, setPage] = useState(0);
 
   return (
-    <div className='admin-container'>
+    <motion.div layoutId='animation' className='admin-container'>
         <div className='admin-header'>
             <div className='welcome-user'> Hello Admin</div>
             {page===0 &&<Link to='/'><i className="material-icons">home</i></Link>}
@@ -27,6 +28,6 @@ export default function Admin(){
             {page === 2 && <BeforePreview setPage={setPage}/>}
             {page === 3 && <Preview />}
         </div>
-    </div>
+    </motion.div>
   )
 }

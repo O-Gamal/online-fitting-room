@@ -1,11 +1,9 @@
 /* eslint-disable */ 
 import React, { useState } from 'react'
-import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
-import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
-import { Link } from 'react-router-dom';
-import { FileUploader } from "react-drag-drop-files";
 import Button from '../../utilities/button/Button'
+import { Link } from 'react-router-dom';
 import Input from '../../utilities/input/Input'
+import DropZone from '../../utilities/dropzone/DropZone';
 import './Intro.scss'
 
 
@@ -25,45 +23,14 @@ function Manual(){
   )
 }
 
-const dropzoneChildren = (DropzoneStatus) => (
-  <Group position="center" style={{ minHeight: 200, pointerEvents: 'none', minWidth:400 }}>
-    <div>
-      <Text size="xl" inline>
-        Drag your image here
-      </Text>
-      <Text size="l" color="dimmed" inline mt={12}>
-        or click to select file
-      </Text>
-    </div>
-  </Group>
-);
 
-const fileTypes = ["JPG", "PNG", "GIF"];
 
 function UploadPhoto(){
-
-  const [image, setImage] = useState(null);
-  console.log(image);
-
-  const handleChange = (file) => {
-    setImage(file);
-  };
 
   return(
       <>
       <h2>Upload Your Photo</h2>
-      <Dropzone
-        loading={false}
-        className='dropzone'
-        accept={IMAGE_MIME_TYPE}
-        radius={30}
-        onDrop={(file) => setImage(file[0])}
-        onReject={(file) => console.log('rejected files', file[0])}
-        multiple={false}
-      >
-      {(status) => dropzoneChildren(status)}
-
-      </Dropzone>
+      <DropZone />
       </>
   )
 }

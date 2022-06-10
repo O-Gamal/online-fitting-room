@@ -5,6 +5,7 @@ import { Group, Text} from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
 import Button from '../../../utilities/button/Button'
 import Input from '../../../utilities/input/Input'
+import DropZone from '../../../utilities/dropzone/DropZone';
 
 const TshirtPage = ({setPage}) => {
 
@@ -30,28 +31,8 @@ const TshirtPage = ({setPage}) => {
         <div className="TshirtPage-dropZone">
           <Input className='TshirtPage-input' placeholder='Name' />
           <div className="TshirtPage-drops">
-            <Dropzone
-              loading={false}
-              className='dropzone'
-              accept={IMAGE_MIME_TYPE}
-              radius={30}
-              onDrop={(file) => setImage1(file[0])}
-              onReject={(file) => console.log('rejected files', file[0])}
-              multiple={false}
-            >
-              {(status) => dropzoneChildren(status)}
-            </Dropzone>
-            <Dropzone
-              loading={false}
-              className='dropzone'
-              accept={IMAGE_MIME_TYPE}
-              radius={30}
-              onDrop={(file) => setImage2(file[0])}
-              onReject={(file) => console.log('rejected files', file[0])}
-              multiple={false}
-            >
-              {(status) => dropzoneChildren(status)}
-            </Dropzone>
+            <DropZone />
+            <DropZone />
           </div>
         </div>
         <div className="TshirtPage-btns">
