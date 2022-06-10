@@ -1,0 +1,62 @@
+@use '../../utilities/variables' as utils;
+
+.size-rec-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.gar-header-container{
+    width: 100%;
+    margin-bottom: 6vh;
+}
+
+.items-container{
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 80%;
+    height: 50%;
+
+    .item-container{
+        background-color: utils.$light-gray-color;
+        border-radius: utils.$radius;
+
+    }
+
+    .item-image{
+        width: 100%;
+        height: 100%;
+        border-radius: utils.$radius;
+    }
+
+    // .item-name{
+    //     font-size: utils.$text-2;
+    //     font-weight: bold;
+    //     text-align: center;
+    //     margin-top: 10px;
+    // }
+}
+
+.btns-container{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 5%;
+
+    .btn{
+        width: 45%;
+        cursor: pointer;
+    }
+}
+
+.selected{
+    background: linear-gradient(utils.$light-gray-color, utils.$light-gray-color) padding-box,
+                utils.$background-image border-box;
+                border: 3px solid transparent;
+  }

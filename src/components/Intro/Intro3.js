@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
 import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
 import { Link } from 'react-router-dom';
+import { FileUploader } from "react-drag-drop-files";
 import Button from '../../utilities/button/Button'
 import Input from '../../utilities/input/Input'
 import './Intro.scss'
@@ -36,12 +37,16 @@ const dropzoneChildren = (DropzoneStatus) => (
   </Group>
 );
 
-
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 function UploadPhoto(){
 
   const [image, setImage] = useState(null);
   console.log(image);
+
+  const handleChange = (file) => {
+    setImage(file);
+  };
 
   return(
       <>

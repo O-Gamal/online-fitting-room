@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../utilities/button/Button'
 import './GarmentType.scss'
 
-export default function GarmentType() {
+export default function GarmentType({setGarmentType, setNext}) {
 
     const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ export default function GarmentType() {
     const hendleSelection = (e) => {
         console.log(e.target.id)
         setGarType(e.target.id)
+        setGarmentType(e.target.id)
 
         if(e.target.id === 'shirt') {
             setIsShirt(true)
@@ -40,10 +41,10 @@ export default function GarmentType() {
                     {garTypes.map((gar, index) => <img id={gar} className={garType == gar ? 'clicked' : ''} key={index} onClick={hendleSelection} src={`/images/icons/${gar}.png`} alt={gar}/>)}
                 </div>
                 <div className='gar-type-btns'>
-                    <Button full='gar-type-btn' > Try-On </Button>
-                    { isShirt && <Button full='gar-type-btn'> Size Recommendation </Button>}
+                    <Button full='gar-type-btn' onClick={()=> setNext('Try-On')}> Try-On </Button>
+                    { isShirt && <Button full='gar-type-btn' onClick={()=> setNext('Size Recommendation')}> Size Recommendation </Button>}
                 </div>
             </div>
         </div>
-  )
+    )
 }
