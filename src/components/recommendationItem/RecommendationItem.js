@@ -4,7 +4,6 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import './RecommendationItem.scss'
-import Radio from '../../utilities/radio/Radio'
 
 
 export default function RecommendationItem({garment, setNext, setSize, size}) {

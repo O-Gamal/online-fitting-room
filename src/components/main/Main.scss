@@ -10,6 +10,10 @@
     align-items: center;
     justify-content: space-around;
     border-radius: utils.$radius;
+
+    .nav-container{
+        width: 100%;
+    }
 }
 
 .nav {
