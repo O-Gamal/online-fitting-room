@@ -11,7 +11,9 @@ export default function User() {
   const {userPage} = useSelector(state => state.user);
   
   return (
-    <motion.div layoutId='animation' layout className='user-container'>
+    <motion.div 
+    exit={{ x: 50 }}
+    layout className='user-container'>
         {userPage === 1 && <Intro1/>}
         {userPage === 2 && <Intro2/>}
         {userPage === 3 && <Intro3/>}

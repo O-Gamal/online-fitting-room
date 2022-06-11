@@ -1,8 +1,6 @@
 /* eslint-disable*/
-import React, { useState } from 'react';
+import React from 'react';
 import './TshirtPage.scss';
-import { Group, Text} from '@mantine/core';
-import { Dropzone, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
 import Button from '../../../utilities/button/Button';
 import Input from '../../../utilities/input/Input';
 import { useDispatch } from 'react-redux';
@@ -12,22 +10,7 @@ import DropZone from '../../../utilities/dropzone/DropZone';
 
 const TshirtPage = () => {
 
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
   const dispatch = useDispatch();
-
-  const dropzoneChildren = (DropzoneStatus) => (
-    <Group position="center" style={{ minHeight: 150, pointerEvents: 'none', minWidth:400 }}>
-      <div>
-        <Text size="xl" inline>
-          Drag your image here
-        </Text>
-        <Text size="l" color="dimmed" inline mt={12}>
-          or click to select file
-        </Text>
-      </div>
-    </Group>
-  );
 
   return (
     <div className="TshirtPage">
