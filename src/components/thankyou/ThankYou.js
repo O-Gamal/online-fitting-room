@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import './ThankYou.scss'
+import './ThankYou.scss';
+import { useDispatch, useSelector} from 'react-redux';
+import {setNext} from '../../states/user.js';
 
 const loaderVariants = {
     animation1:{
@@ -26,11 +28,14 @@ function Loader (){
     )
 }
 
-export default function ThankYou({ deal, setNext, garment, size }) {
+export default function  ThankYou({ deal, size }) {
+
+    const dispatch = useDispatch();
+    const {garment} = useSelector(state => state.user);
 
     useEffect(() => {
         setTimeout(() => {
-            setNext('')
+            dispatch(setNext(''))
         }, 3000)
     })
     
