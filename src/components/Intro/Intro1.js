@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import UserLogin from '../userLogin/UserLogin';
 import UserRegister from '../userRegister/UserRegister';
 
-export default function Intro1({setRegPage, regPage}) {
+export default function Intro1() {
   return (
     <motion.div className='intro-container'>
         <Tabs 
@@ -23,9 +23,8 @@ export default function Intro1({setRegPage, regPage}) {
             <Tabs.Tab label="login" tabKey={0} style={{fontSize: '1.2rem'}}>
                 <UserLogin />
             </Tabs.Tab>
-
             <Tabs.Tab  label="Register" tabKey={1} style={{fontSize: '1.2rem'}}>
-                <UserRegister setRegPage={setRegPage} regPage={regPage}/>
+                <UserRegister />
             </Tabs.Tab>
         </Tabs>
     </motion.div>

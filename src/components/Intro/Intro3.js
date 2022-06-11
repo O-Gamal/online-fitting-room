@@ -1,19 +1,17 @@
 /* eslint-disable */ 
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../../utilities/button/Button'
 import { Link } from 'react-router-dom';
 import Input from '../../utilities/input/Input'
 import DropZone from '../../utilities/dropzone/DropZone';
 import './Intro.scss';
 import {useSelector, useDispatch} from 'react-redux';
-import {setMeasurements} from '../../states/user.js';
+import {setMeasurements, setUserPage} from '../../states/user.js';
 
 
 function Manual(){
 
-  const Measurements = ['height', 'weight', 'chest', 'waist', 'hips', 'arm_length', 'inseam', 'neckline'];
-
-  const {measurements} = useSelector(state => state.user);
+  const {measurements, Measurements} = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   return(
@@ -34,10 +32,7 @@ function Manual(){
   )
 }
 
-
-
 function UploadPhoto(){
-
   return(
       <>
       <h2>Upload Your Photo</h2>
@@ -46,15 +41,10 @@ function UploadPhoto(){
   )
 }
 
-export default function Intro3({measureType, setRegPage, regPage}) {
+export default function Intro3() {
 
-  const handleNext = () => {
-      setRegPage(regPage + 1)
-  }
-
-  const handleBack = () => {
-      setRegPage(regPage - 1)
-  }
+  const { measureType } = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   return (
     <div className='intro-container'>
@@ -62,7 +52,7 @@ export default function Intro3({measureType, setRegPage, regPage}) {
       <Link to='/user/app'>
         <Button pad={8}> Register </Button>
       </Link>
-      <Button full='blk' pad={8} onClick={handleBack}> Back </Button>
+      <Button full='blk' pad={8} onClick={()=>dispatch(setUserPage(2))}> Back </Button>
       
     </div>
   )

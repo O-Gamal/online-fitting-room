@@ -19,6 +19,6 @@ const initialState = {
     },
   })
   
-  export const { setPage, setGarType } = admin.actions
+  export const { setPage, setGarType } = admin.actions;
   
-  export default admin.reducer
+  export default admin.reducer;

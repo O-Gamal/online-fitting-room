@@ -1,21 +1,16 @@
 import React from 'react'
 import Button from '../../utilities/button/Button'
 import Input from '../../utilities/input/Input'
-import { motion } from 'framer-motion';
 import './UserRegister.scss';
-import {setUser} from '../../states/user.js';
+import {setUser, setUserPage} from '../../states/user.js';
 import {useSelector, useDispatch} from 'react-redux';
 
 
-export default function UserRegister({setRegPage, regPage}) {
+export default function UserRegister() {
 
   const userIns = ['name', 'age', 'gender'];
   const {user} = useSelector(state => state.user);
   const dispatch = useDispatch();
-
-  const handleNext = () => {
-    setRegPage(regPage + 1)
-  }
 
   return (
     <div className='register-container'>
@@ -28,7 +23,7 @@ export default function UserRegister({setRegPage, regPage}) {
              onChange={e => dispatch(setUser({...user, [userIn] : e.target.value}))}
              />
           )}
-      <Button onClick={handleNext}> Next </Button>
+      <Button onClick={()=>dispatch(setUserPage(2))}> Next </Button>
     </div>
   )
 }

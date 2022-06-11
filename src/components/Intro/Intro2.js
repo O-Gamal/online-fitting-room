@@ -1,31 +1,15 @@
 /* eslint-disable */ 
-import React, { useState } from 'react'
+import React from 'react'
 import './Intro.scss'
 import Button from '../../utilities/button/Button'
 import Radio from '../../utilities/radio/Radio'
-import { Chips, Chip } from '@mantine/core';
-import { NativeSelect } from '@mantine/core';
-import Input from '../../utilities/input/Input';
-import { useDispatch} from 'react-redux';
-import {setFitPreference, setSkinTone} from '../../states/user.js';
+import { useDispatch, useSelector} from 'react-redux';
+import {setFitPreference, setSkinTone, setUserPage, setMeasureType} from '../../states/user.js';
 
-export default function Intro2({regPage, setRegPage, setMeasureType}) {
+export default function Intro2() {
 
     const dispatch = useDispatch();
-    const [measurementsType, setMeasurementsType] = useState('Manual');
-
-    const handleNext = () => {
-        setRegPage(regPage + 1)
-        setMeasureType(measurementsType)
-    }
-
-    const handleBack = () => {
-        setRegPage(regPage - 1)
-    }
-
-    const fitPreferences = ['Looser', 'Perfect', 'Tighter'];
-    const skinTones = ['African', 'Hispanic', 'Indian', 'Seasian', 'Midset', 'Asian', 'White'];
-    const measurementTypes = ['Manual', 'Upload Photo'];
+    const {fitPreferences, skinTones, measurementTypes} = useSelector(state => state.user);
 
     return (
         <div className='intro-container'>
@@ -44,11 +28,11 @@ export default function Intro2({regPage, setRegPage, setMeasureType}) {
             <h2 className='register-title'>Body Measurements</h2>
             <div className='radio-container measurments'>
                 {measurementTypes.map((type, index) => {
-                    return <Radio vart='radio-btn' key={index} label={type} name='measurements' value={type} onChange={() => setMeasurementsType(type)}/>
+                    return <Radio vart='radio-btn' key={index} label={type} name='measurements' value={type} onChange={() => dispatch(setMeasureType(type))}/>
                 })}
             </div>
-            <Button onClick={handleNext} pad={8}> Next </Button>
-            <Button onClick={handleBack} pad={8} full='blk'> Back </Button>
+            <Button onClick={()=>dispatch(setUserPage(3))} pad={8}> Next </Button>
+            <Button onClick={()=>dispatch(setUserPage(1))} pad={8} full='blk'> Back </Button>
         </div>
     )
 }

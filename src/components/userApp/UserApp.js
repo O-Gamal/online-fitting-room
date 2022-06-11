@@ -8,9 +8,10 @@ import SizeRecommendation from '../sizeRecommendation.js/SizeRecommendation'
 import RecommendationItem from '../recommendationItem/RecommendationItem'
 import Rating from '../rating/Rating'
 import ThankYou from '../thankyou/ThankYou'
+import { useSelector, useDispatch } from 'react-redux';
 
 
-export default function UserApp({name}) {
+export default function UserApp() {
 
     const [garmentType, setGarmentType] = useState('')
     const [garment, setGarment] = useState('')
@@ -18,10 +19,12 @@ export default function UserApp({name}) {
     const [size, setSize] = useState('');
     const [deal, setDeal] = useState('');
 
+    const {user} = useSelector(state => state.user);
+
     return (
         <motion.div layoutId='animation' className='app-container'>
             <div className='app-header'>
-                <div className='welcome-user'> Hello { name }</div>
+                <div className='welcome-user'> Hello { user.name }</div>
                 <nav>
                     <ul>
                         <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>
