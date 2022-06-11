@@ -1,32 +1,30 @@
-import React from 'react'
-import { Tabs } from '@mantine/core';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion';
 import UserLogin from '../userLogin/UserLogin';
 import UserRegister from '../userRegister/UserRegister';
 
 export default function Intro1() {
+
+  const [tab, setTab] = useState(0);
+
   return (
-    <motion.div className='intro-container'>
-        <Tabs 
-            variant="pills" 
-            position="center" 
-            grow 
-            style={{width: '100%'}}
-            classNames={{
-                tabActive: 'activeTab',
-                tabInner: 'innerTab',
-                tabsList: ' tabsList',  
-                tabControl: 'tabControl',
-                tabsListWrapper: 'tabsWrapper',
-            }}
-          >
-            <Tabs.Tab label="login" tabKey={0} style={{fontSize: '1.2rem'}}>
-                <UserLogin />
-            </Tabs.Tab>
-            <Tabs.Tab  label="Register" tabKey={1} style={{fontSize: '1.2rem'}}>
-                <UserRegister />
-            </Tabs.Tab>
-        </Tabs>
+    <motion.div layout className='intro-container'>
+  
+      <motion.div className='taps-container'>
+        <div className= {tab === 0 ? "tap login-tap active" : "tap login-tap"} onClick={()=>setTab(0)}>Login</div>
+        <div className= {tab === 1 ?'tap register-tap active' : "tap register-tap"} onClick={()=>setTab(1)}>Register</div>
+        <motion.div
+          className='active-tap tap'
+          initial={{ left: 0 }}
+          animate={{ left: tab === 0 ? '0%' : '50%' }}
+          transition={{ type: 'spring', duration: 0.3 }}
+          ></motion.div>
+      </motion.div>
+
+      {/* <AnimatePresence> */}
+        { tab === 0 && <UserLogin />}
+        { tab === 1 && <UserRegister />}
+      {/* </AnimatePresence> */}
     </motion.div>
   )
 }
