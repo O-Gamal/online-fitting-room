@@ -10,6 +10,45 @@
         margin: 20px 0;
     }
 
+    .taps-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border: 3px solid utils.$black-color;
+        border-radius: utils.$radius;
+        font-weight: utils.$bold-waight;
+        font-size: utils.$text-2;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        
+
+
+
+        .tap{
+            border-radius: utils.$radius;
+            height: 100%;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .active{
+            // background-color: utils.$black-color;
+            color: utils.$white-color;
+            
+        }
+
+        .active-tap{
+            position: absolute;
+            background-color: utils.$black-color;
+            z-index: -1;
+        }
+
+    }
+
 
     .back-btn{
         background: none ;
