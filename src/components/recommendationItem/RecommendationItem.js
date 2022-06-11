@@ -4,9 +4,10 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import './RecommendationItem.scss'
+import { useDispatch, useSelector} from 'react-redux';
+import {setNext} from '../../states/user.js';
 
-
-export default function RecommendationItem({garment, setNext, setSize, size}) {
+export default function RecommendationItem({setSize, size}) {
 
   const [pose, setPose] = useState(0);
   // 0:T 1:I 2:A
@@ -14,6 +15,8 @@ export default function RecommendationItem({garment, setNext, setSize, size}) {
   const [recomendedSize, setRecomendedSize] = useState('M');
   const [StandardSize, setStandardSize] = useState('L');
   
+  const dispatch = useDispatch();
+  const {garment} = useSelector(state => state.user);
 
   const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
@@ -44,8 +47,8 @@ export default function RecommendationItem({garment, setNext, setSize, size}) {
         </div>
 
         <div className='btns-container'>
-          <Button full='btn back-btn' onClick={()=> setNext('Size Recommendation')}> Back </Button>
-          <Button full='btn next-btn' onClick={()=> setNext('Rating')}> Buy </Button>
+          <Button full='btn back-btn' onClick={()=> dispatch(setNext('Size Recommendation'))}> Back </Button>
+          <Button full='btn next-btn' onClick={()=> dispatch(setNext('Rating'))}> Buy </Button>
         </div>
       </div>
       <div className='right'>

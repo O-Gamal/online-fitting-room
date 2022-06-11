@@ -4,10 +4,13 @@ import Button from '../../utilities/button/Button'
 import { Tooltip } from '@mantine/core';
 import { motion } from 'framer-motion'
 import './SizeRecommendation.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import {setNext, setGarment} from '../../states/user.js';
 
+export default function SizeRecommendation() {
 
-export default function SizeRecommendation({setNext, setGarment, garment}) {
-
+  const dispatch = useDispatch();
+  const {garment} = useSelector(state => state.user);
 
   return (
     <div className='size-rec-container'>
@@ -28,7 +31,7 @@ export default function SizeRecommendation({setNext, setGarment, garment}) {
             <motion.div 
               className= {garment === item.name ? 'item-container selected' : 'item-container'}
               whileHover={{ scale: 1.1  ,transition: { duration: 0.3 } }}
-              onClick={e => setGarment(item.name)}
+              onClick={e => dispatch(setGarment(item.name))}
             >
               <img className='item-image' src={item.image} alt={item.name}/>
               {/* <div className='item-name'>{item.name}</div> */}
@@ -38,8 +41,8 @@ export default function SizeRecommendation({setNext, setGarment, garment}) {
         })}
       </div>
       <div className='btns-container'>
-        <Button full='btn back-btn' onClick={()=> setNext('')}> Back </Button>
-        <Button full='btn next-btn' onClick={()=> setNext('Recommendation Item')}> Next </Button>
+        <Button full='btn back-btn' onClick={()=> dispatch(setNext(''))}> Back </Button>
+        <Button full='btn next-btn' onClick={()=> dispatch(setNext('Recommendation Item'))}> Next </Button>
       </div>
     </div>
   )

@@ -1,10 +1,13 @@
 /* eslint-disable */ 
 import React, { useState } from 'react'
 import Button from '../../utilities/button/Button'
-import './GarmentType.scss'
+import './GarmentType.scss';
+import { useDispatch } from 'react-redux';
+import {setNext} from '../../states/user.js';
 
-export default function GarmentType({setGarmentType, setNext}) {
+export default function GarmentType({setGarmentType}) {
 
+    const dispatch = useDispatch();
 
     const garTypes = ['shirt', 'pants', 'short', 'skirt']
     
@@ -23,13 +26,7 @@ export default function GarmentType({setGarmentType, setNext}) {
         }
 
     }
-
-    // const handleNext = (path) => {
-    //     navigate(path)
-    // }
-
-
-    
+  
     return (
         <div className='gar-type-container'>
             <div className='gar-type-header'>
@@ -40,8 +37,8 @@ export default function GarmentType({setGarmentType, setNext}) {
                     {garTypes.map((gar, index) => <img id={gar} className={garType == gar ? 'clicked' : ''} key={index} onClick={hendleSelection} src={`/images/icons/${gar}.png`} alt={gar}/>)}
                 </div>
                 <div className='gar-type-btns'>
-                    <Button full='gar-type-btn' onClick={()=> setNext('Try-On')}> Try-On </Button>
-                    { isShirt && <Button full='gar-type-btn' onClick={()=> setNext('Size Recommendation')}> Size Recommendation </Button>}
+                    <Button full='gar-type-btn' onClick={()=> dispatch(setNext('Try-On'))}> Try-On </Button>
+                    { isShirt && <Button full='gar-type-btn' onClick={()=> dispatch(setNext('Size Recommendation'))}> Size Recommendation </Button>}
                 </div>
             </div>
         </div>

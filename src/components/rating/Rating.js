@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence  } from 'framer-motion'
 import Button from '../../utilities/button/Button'
 import Input from '../../utilities/input/Input'
-import './Rating.scss'
+import './Rating.scss';
+import { useDispatch, useSelector} from 'react-redux';
+import {setNext} from '../../states/user.js';
 
-function Rate ({setNext, setDeal}) {
+function Rate ({setDeal}) {
     const [rating, setRating] = useState();
+    const dispatch = useDispatch();
 
     return(
 
@@ -18,7 +21,7 @@ function Rate ({setNext, setDeal}) {
                 <h2>Please, rate the product size</h2>
                 <div className='rate-input-container'>
                     <Input className='rate-input' placeholder='Rate / 5' onChange={(e) => setRating(e.target.value)}/>
-                    <Button full='rate-btn' onClick={() => {setNext('Thank You'); setDeal('rated')}}>Submit</Button>
+                    <Button full='rate-btn' onClick={() => {dispatch(setNext('Thank You')); setDeal('rated')}}>Submit</Button>
                 </div>
             </motion.div>
         
@@ -26,9 +29,11 @@ function Rate ({setNext, setDeal}) {
 
 }
 
-export default function Rating({garment, size, setNext, setDeal}) {
+export default function Rating({size, setDeal}) {
   
     const [showRating, setShowRating] = useState(false);
+    const dispatch = useDispatch();
+    const {garment} = useSelector(state => state.user);
 
     return (
     <div className='rating-container' >
@@ -45,8 +50,8 @@ export default function Rating({garment, size, setNext, setDeal}) {
         {showRating && <Rate setNext={setNext} setDeal={setDeal}/>}
         </AnimatePresence>
         <motion.div layout transition={{ duration: 0.1 }} className='rating-buttons'>
-            <Button onClick={() => {setNext('Thank You'); setDeal('returned')}}> Return the Product </Button>
-            <Button onClick={() => setNext('')}> Buy More! </Button>
+            <Button onClick={() => {dispatch(setNext('Thank You')); setDeal('returned')}}> Return the Product </Button>
+            <Button onClick={() => dispatch(setNext(''))}> Buy More! </Button>
         </motion.div>
     </div>
   )

@@ -5,18 +5,17 @@ import { OrbitControls } from '@react-three/drei'
 import Button from '../../utilities/button/Button'
 import { motion }  from 'framer-motion'
 import './Preview.scss'
-
 import items from '../../utilities/items'
+import { useDispatch} from 'react-redux';
+import {setNext} from '../../states/user.js';
 
-export default function Preview({setNext}) {
+export default function Preview() {
 
     const ref = useRef();
     const [pose, setPose] = useState(0);
     // 0:T 1:I 2:A
-
+    const dispatch = useDispatch();
     const [selectedItem, setSelectedItem] = useState(0);
-    
-
 
   return (
       <div className='preview'>
@@ -58,7 +57,7 @@ export default function Preview({setNext}) {
             </div>
             
         </div>
-        <Button full='back-btn' onClick={()=>{setNext('')}}> Back </Button>
+        <Button full='back-btn' onClick={()=>{dispatch(setNext(''))}}> Back </Button>
     </div>
   )
 }
