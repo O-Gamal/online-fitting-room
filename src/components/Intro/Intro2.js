@@ -22,7 +22,7 @@ export default function Intro2() {
             <h2 className='register-title'>Select Your Skin tone</h2>
             <div className='radio-container skin-tone'>
                 {skinTones.map((tone, index) => {
-                    return <Radio vart='rnd' key={index} label={tone} name='skin' color='red' value={tone} onChange={() => dispatch(setSkinTone(tone))}/>
+                    return <Radio vart='rnd' key={index} label={tone.name} name='skin' color={tone.color} value={tone.value} onChange={() => dispatch(setSkinTone(tone))}/>
                 })}
             </div>
             <h2 className='register-title'>Body Measurements</h2>

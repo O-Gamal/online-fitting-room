@@ -8,7 +8,7 @@ export default function Intro1() {
   const [tab, setTab] = useState(0);
 
   return (
-    <motion.div layout className='intro-container'>
+    <motion.div className='intro-container'>
   
       <motion.div className='taps-container'>
         <div className= {tab === 0 ? "tap login-tap active" : "tap login-tap"} onClick={()=>setTab(0)}>Login</div>

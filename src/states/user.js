@@ -21,7 +21,14 @@ const initialState = {
     },
     measureType: 'manual',
     fitPreferences: ['Looser', 'Perfect', 'Tighter'],
-    skinTones: ['African', 'Hispanic', 'Indian', 'Seasian', 'Midset', 'Asian', 'White'],
+    skinTones: [
+      {'name':'African', 'color':'#8b472c'},
+      {'name':'Hispanic', 'color':'#dea990'},
+      {'name':'Seasian', 'color':'#c48d6d'},
+      {'name':'Midset', 'color':'#f1c2ac'},
+      {'name':'Asian', 'color':'#f1c3ac'},
+      {'name':'White', 'color':'#f3cca9'},
+    ],
     measurementTypes: ['Manual', 'Upload Photo'],
     Measurements: ['height', 'weight', 'chest', 'waist', 'hips', 'arm_length', 'inseam', 'neckline'],
   }
