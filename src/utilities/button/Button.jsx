@@ -1,13 +1,20 @@
 import React from 'react';
 import './button.scss';
+import { motion } from 'framer-motion';
 
 const Button = ({pad, full, children, onClick, val}) => {
   return (
-    <div id={val} className={'btn '+ full} onClick={onClick} style={{paddingTop: pad , paddingBottom: pad}}>
+    <motion.div
+      id={val}
+      className={'btn '+ full}
+      onClick={onClick}
+      style={{paddingTop: pad , paddingBottom: pad}}
+      whileHover={{scale: 1.02}}
+    >
       <p>
         {children} 
       </p>
-    </div>
+    </motion.div>
   )
 }
 

@@ -26,6 +26,10 @@
         border-top-left-radius: utils.$radius;
         border-top-right-radius: utils.$radius;
 
+        i{
+            font-size: utils.$header-3;
+        }
+
 
         ul{
             list-style: none;
@@ -42,7 +46,6 @@
                 cursor: pointer;
 
                 .material-icons{
-                    font-size: utils.$header-4;
 
                     &:hover{
                         color: utils.$light-gray-color;
@@ -60,5 +63,16 @@
         height: 92%;
         width: 100%;
     }
+
+}
+
+.welcome-user{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    cursor: pointer;
+
+    
 
 }

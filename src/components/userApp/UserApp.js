@@ -16,7 +16,7 @@ export default function UserApp() {
     const {next, user} = useSelector(state => state.user);
     const dispatch = useDispatch();
 
-    const [garmentType, setGarmentType] = useState('');
+    const [garmentType, setGarmentType] = useState({'shirt': false, 'pants': false, 'short': false, 'skirt': false});
     const [size, setSize] = useState('');
     const [deal, setDeal] = useState('');
 
@@ -30,7 +30,7 @@ export default function UserApp() {
             transition={{ ease: "easeInOut" , duration: 0.5}}
             >
             <div className='app-header'>
-                <div className='welcome-user'> Hello { user.name }</div>
+                <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.name }</div>
                 <nav>
                     <ul>
                         { next === '' && <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>}
@@ -40,7 +40,7 @@ export default function UserApp() {
                 </nav>
             </div>
             <div className='app-body'>
-                {next === '' && <GarmentType setGarmentType={setGarmentType}/>}
+                {next === '' && <GarmentType setGarmentType={setGarmentType} garmentType={garmentType} />}
                 {next === 'Try-On' && <Preview garmentType={garmentType}/>}
                 {next === 'Size Recommendation' && <SizeRecommendation />}
                 {next === 'Recommendation Item' && <RecommendationItem setSize={setSize} size={size}/>}
