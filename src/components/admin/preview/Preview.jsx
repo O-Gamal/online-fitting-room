@@ -4,13 +4,14 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Button from '../../../utilities/button/Button';
 import './Preview.scss';
+import {motion} from 'framer-motion';
 
 export default function Preview() {
 
     const [pose, setPose] = useState(0);
     
     return (
-        <div className='admin-preview'>
+        <motion.div initial={{ opacity: 0, y:20 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -20 }}  transition={{delay: 0.2 }} className='admin-preview'>
             <div className='preview-container'>
                 <div className='canvas-container'>
                     <Canvas className='canvas'>
@@ -27,6 +28,6 @@ export default function Preview() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
