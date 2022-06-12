@@ -9,7 +9,6 @@ export default function userLogin() {
     <motion.div
       initial={{ x: 100, opacity: 0}}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 100 }}
       className='login-container' >
       <h2 className='login-title'>Enter Your Id Below:</h2>
       <Input placeholder='User Id' type='text' className='login-input'/>

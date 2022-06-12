@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Main.scss';
 import {useDispatch} from 'react-redux';
 import { setUserPage } from '../../states/user';
@@ -9,10 +9,12 @@ export default function Main() {
 
   const dispatch = useDispatch();
   return (
+    <AnimatePresence exitBeforeEnter>
     <motion.div
       className='main-container'
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut"}}
     >
         <Link to='/admin' className='nav-container'>
           <motion.div
@@ -32,5 +34,6 @@ export default function Main() {
           </motion.div>
         </Link>
     </motion.div>
+    </AnimatePresence>
   )
 }

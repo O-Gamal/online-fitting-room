@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Group, Text } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
 import Button from '../../utilities/button/Button'
+import { motion } from 'framer-motion';
 
 import './DropZone.scss'
 
-const dropzoneChildren = (DropzoneStatus) => (
+const dropzoneChildren = () => (
   <Group position="center" style={{ minHeight: 200, pointerEvents: 'none', minWidth:400 }}>
     <div>
       <Text size="xl" inline>
@@ -27,8 +28,8 @@ export default function DropZone() {
     <div>
         {image !== null ? 
       <div className='uploaded-image-container'>
-        <img className='uploaded-image' src={image} alt='uploaded image'/>
-        <Button full='remove-btn' onClick={() => setImage(null)}><i className="material-icons">close</i></Button>
+        <motion.img initial={{opacity: 0}} animate={{opacity: 1}} className='uploaded-image' src={image} alt='uploaded image'/>
+        <Button full='remove-btn' onClick={() => setImage(null)}><motion.i initial={{opacity: 0, y: 50}} animate={{opacity: 1, y: 0}} className="material-icons">close</motion.i></Button>
       </div>
       : 
       <Dropzone
@@ -40,7 +41,7 @@ export default function DropZone() {
           setImage(URL.createObjectURL(files[0]));
         }}
         onReject={(file) => console.log('rejected files', file[0])}
-        multiple={false}
+        multiple={ false }
       >
       {(status) => dropzoneChildren(status)}
 

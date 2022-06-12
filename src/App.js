@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React,{useRef} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion';
 import User from './components/user/User'
@@ -9,9 +9,10 @@ import UserApp from './components/userApp/UserApp';
 import './App.scss';
 
 function App() {
-  
+
   return (
-      <div className="App">
+    // <AnimatePresence exitBeforeEnter>
+      <motion.div  className="App">
         <Router>
           <Routes>
             <Route path="/" element={<Main/>} />
@@ -20,7 +21,8 @@ function App() {
             <Route path="/user/app" element={<UserApp/>} />
           </Routes>
         </ Router>
-      </div>
+      </motion.div>
+    // </AnimatePresence>
   );
 }
 

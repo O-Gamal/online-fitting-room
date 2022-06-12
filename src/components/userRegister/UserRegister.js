@@ -19,10 +19,13 @@ export default function UserRegister() {
     <motion.div
       initial={{ x: -100, opacity: 0}}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 100 }}
+      transition = {{
+
+      }}
       className='register-container'>
       <h2 className='register-title'>Enter Your Info Below:</h2>
       {userIns.map(userIn => 
+
              <Input 
              key={userIn} 
              placeholder={userIn} 
