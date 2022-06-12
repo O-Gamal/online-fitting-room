@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import './UserApp.scss'
 import GarmentType from '../garmentType/GarmentType'
 import Preview from '../preview/Preview'
@@ -21,12 +21,19 @@ export default function UserApp() {
     const [deal, setDeal] = useState('');
 
     return (
-        <motion.div layoutId='animation' className='app-container'>
+        <AnimatePresence exitBeforeEnter>
+        <motion.div
+            className='app-container'
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.1 }}
+            transition={{ ease: "easeInOut" , duration: 0.5}}
+            >
             <div className='app-header'>
                 <div className='welcome-user'> Hello { user.name }</div>
                 <nav>
                     <ul>
-                        <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>
+                        { next === '' && <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>}
                         { next === '' && <li><Link to='/'><i className="material-icons">home</i></Link></li>}
                         { next !== '' && <li><Link to='/user/app'><i onClick={()=>dispatch(setNext(''))} className="material-icons">home</i></Link></li>}
                     </ul>
@@ -41,5 +48,6 @@ export default function UserApp() {
                 {next === 'Thank You' && <ThankYou deal={deal} size={size}/>}
             </div>
         </motion.div>
+        </AnimatePresence>
     )
 }

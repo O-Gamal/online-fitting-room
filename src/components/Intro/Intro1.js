@@ -17,8 +17,9 @@ export default function Intro1() {
           className='active-tap tap'
           initial={{ left: 0 }}
           animate={{ left: tab === 0 ? '0%' : '50%' }}
-          transition={{ type: 'spring', duration: 0.3 }}
-          ></motion.div>
+          transition={{ ease: "easeOut" , type: 'spring', duration: 0.3 }}
+          
+        ></motion.div>
       </motion.div>
 
       {/* <AnimatePresence> */}

@@ -66,6 +66,7 @@ const initialState = {
     },
   })
   
+  
   export const { setUserPage, setUser, setMeasurements, setFitPreference, setSkinTone, setMeasureType, setNext, setGarment } = user.actions
   
   export default user.reducer;
