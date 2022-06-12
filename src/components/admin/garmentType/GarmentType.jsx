@@ -11,13 +11,14 @@ export default function GarmentType() {
     const dispatch = useDispatch()
 
     return (
-            <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x:0 }} exit={{ opacity: 0, x: 100 }} transition={{velocity: 90,type: "Inertia"}}   className='garType'>
+            <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className='garType'>
                 <h1 className='gar-type-header'> Select Garment Type: </h1>
                 <div className='garments'>
                     {garTypes.map((gar, index) => <img id={gar} className={garType === gar ? 'clicked' : ''} key={index} onClick={(e)=>dispatch(setGarType(e.target.id))} src={`/images/icons/${gar}.png`} alt={gar}/>)}
                 </div>
-                <div className='gar-type-btns'>
-                    <Button onClick={()=>dispatch(setPage(1))} full='gar-type-btn' pad='12px' > Next </Button>
+                <div className={'gar-type-btns ' +  (garType==='shirt'?'garType2btns':'')}>
+                    <Button onClick={()=>dispatch(setPage(1))} full='gar-type-btn' pad='12px' > Add color </Button>
+                    { garType==='shirt' && <Button onClick={()=>dispatch(setPage(2))} full='gar-type-btn' pad='12px' > Add texture </Button>}
                 </div>
             </motion.div>
   )
