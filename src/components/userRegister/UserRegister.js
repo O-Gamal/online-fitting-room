@@ -23,12 +23,13 @@ export default function UserRegister() {
       className='register-container'>
       <h2 className='register-title'>Enter Your Info Below:</h2>
       {userIns.map(userIn => 
-            <Input 
-              key={userIn} 
-              placeholder={userIn} 
-              value={user[userIn]} 
-              onChange={e => dispatch(setUser({...user, [userIn] : e.target.value}))}
-            />
+             <Input 
+             key={userIn} 
+             placeholder={userIn} 
+             value={user[userIn]}
+             type={userIn === 'age' ? 'number' : 'text'}
+             onChange={e => dispatch(setUser({...user, [userIn] : e.target.value}))}
+             />
           )}
       <Button onClick={()=>dispatch(setUserPage(2))}> Next </Button>
     </motion.div>

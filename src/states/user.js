@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     next:'',
     garment:'',
+    lowerGarment:'',
+    upperGarment:'',
     userPage: 1,
     user: {
         name: 'ahmed',
         age: 23,
-        gender: 'male'
+        gender: ''
     },
     fitPreference: '',
     skinTone:'',
@@ -63,10 +65,16 @@ const initialState = {
       setMeasureType: (state, action) => {
         state.measureType = action.payload;
       },
+      setUpperGarment: (state, action) => {
+        state.upperGarment = action.payload;
+      },
+      setLowerGarment: (state, action) => {
+        state.lowerGarment = action.payload;
+      },
     },
   })
   
-  
-  export const { setUserPage, setUser, setMeasurements, setFitPreference, setSkinTone, setMeasureType, setNext, setGarment } = user.actions
+
+  export const { setUserPage, setUser, setMeasurements, setFitPreference, setSkinTone, setMeasureType, setNext, setGarment, setLowerGarment, setUpperGarment} = user.actions
   
   export default user.reducer;
