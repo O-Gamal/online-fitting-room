@@ -24,7 +24,8 @@ export default function UserRegister() {
              <Input 
              key={userIn} 
              placeholder={userIn} 
-             value={user[userIn]} 
+             value={user[userIn]}
+             type={userIn === 'age' ? 'number' : 'text'}
              onChange={e => dispatch(setUser({...user, [userIn] : e.target.value}))}
              />
           )}

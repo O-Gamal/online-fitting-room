@@ -12,13 +12,21 @@
     border: none;
     outline: none;
 
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
     &:focus{
         border: 1px solid utils.$secondary-color-1;
         box-shadow: 0 0 5px utils.$secondary-color-2;
         background-color: transparent;
-        
-        // &::placeholder{
-        //     color: transparent;
-        // }
     }
+}
+
+select {
+    -webkit-appearance:none; 
+    padding: 0px;
+    margin: 0px;
 }

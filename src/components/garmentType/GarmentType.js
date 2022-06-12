@@ -2,27 +2,33 @@
 import React, { useState } from 'react'
 import Button from '../../utilities/button/Button'
 import './GarmentType.scss';
-import { useDispatch } from 'react-redux';
-import {setNext} from '../../states/user.js';
+import { useDispatch, useSelector } from 'react-redux';
+import {setNext, setUpperGarment, setLowerGarment} from '../../states/user.js';
 
 export default function GarmentType({setGarmentType}) {
 
     const dispatch = useDispatch();
+    const {lowerGarment, upperGarment} = useSelector(state => state.user);
 
-    const garTypes = ['shirt', 'pants', 'short', 'skirt']
+    const garTypes = [
+            {name: 'shirt',type: 'upper'},
+            {name: 'pants',type: 'lower'},
+            {name: 'short',type: 'lower'},
+            {name: 'skirt',type: 'lower'}
+    ];
     
     const [garType, setGarType] = useState('')
     const [isShirt, setIsShirt] = useState(false)
 
     const hendleSelection = (e) => {
         console.log(e.target.id)
-        setGarType(e.target.id)
         setGarmentType(e.target.id)
-
         if(e.target.id === 'shirt') {
-            setIsShirt(true)
+            setIsShirt(true);
+            dispatch(setUpperGarment(e.target.id));
         }else{
-            setIsShirt(false)
+            setIsShirt(false);
+            dispatch(setLowerGarment(e.target.id));
         }
 
     }
@@ -34,7 +40,15 @@ export default function GarmentType({setGarmentType}) {
             </div>
             <div className='gar-type-body'>
                 <div className='garments'>
-                    {garTypes.map((gar, index) => <img id={gar} className={garType == gar ? 'clicked' : ''} key={index} onClick={hendleSelection} src={`/images/icons/${gar}.png`} alt={gar}/>)}
+                    {garTypes.map((gar, index) => 
+                    <img 
+                        id={gar.name} 
+                        className={upperGarment == gar.name || lowerGarment == gar.name? 'clicked' : ''} 
+                        key={index}
+                        onClick={hendleSelection} 
+                        src={`/images/icons/${gar.name}.png`} 
+                        alt={gar.name}
+                    />)}
                 </div>
                 <div className='gar-type-btns'>
                     <Button full='gar-type-btn' onClick={()=> dispatch(setNext('Try-On'))}> Try-On </Button>
