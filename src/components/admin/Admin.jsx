@@ -23,7 +23,7 @@ export default function Admin(){
               {page!==0 &&<Link to='/admin'><i onClick={()=>dispatch(setPage(0))} className="material-icons">home</i></Link>}
           </div>
           <div  exit={{ x: 50 }} layout className='admin-body'>
-            <AnimatePresence>
+            <AnimatePresence exitBeforeEnter>
               {page === 0 && <GarmentType/>}
               {page === 1 && garType==='shirt' &&  <TshirtPage/>}
               {page === 1 && garType!=='shirt' &&  <OtherPage/>}

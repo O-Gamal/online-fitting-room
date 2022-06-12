@@ -11,7 +11,7 @@ export default function Preview() {
     const [pose, setPose] = useState(0);
     
     return (
-        <motion.div initial={{ opacity: 0, y:30 }} animate={{ opacity: 1, y:0 }}  transition={{delay: 0.4 }} className='admin-preview'>
+        <motion.div initial={{ opacity: 0, y:20 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -20 }}  transition={{delay: 0.2 }} className='admin-preview'>
             <div className='preview-container'>
                 <div className='canvas-container'>
                     <Canvas className='canvas'>

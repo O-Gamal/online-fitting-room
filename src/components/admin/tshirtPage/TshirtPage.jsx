@@ -14,7 +14,7 @@ const TshirtPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <motion.div initial={{ opacity: 0, y:30 }} animate={{ opacity: 1, y:0 }}  transition={{delay: 0.4 }} className="TshirtPage">
+    <motion.div initial={{ opacity: 0, y:20 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -20 }}  transition={{delay: 0.2 }} className="TshirtPage">
         <h2>Add garment details:</h2>
         <div className="TshirtPage-dropZone">
           <Input className='TshirtPage-input' placeholder='Name' />
