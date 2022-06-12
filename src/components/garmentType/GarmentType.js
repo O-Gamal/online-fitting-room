@@ -4,6 +4,7 @@ import Button from '../../utilities/button/Button'
 import './GarmentType.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {setNext, setUpperGarment, setLowerGarment} from '../../states/user.js';
+import { motion } from 'framer-motion';
 
 export default function GarmentType({setGarmentType}) {
 
@@ -37,13 +38,20 @@ export default function GarmentType({setGarmentType}) {
             <div className='gar-type-body'>
                 <div className='garments'>
                     {garTypes.map((gar, index) => 
-                    <img 
+                    <motion.img 
                         id={gar.name} 
                         className={upperGarment === gar.name || lowerGarment === gar.name? 'clicked' : ''} 
                         key={index}
                         onClick={hendleSelection} 
                         src={`/images/icons/${gar.name}.png`} 
                         alt={gar.name}
+                        initial={{ opacity: 0, y:100 }}
+                        animate={{  opacity: 1,
+                                    y:0,
+                                    scale: upperGarment === gar.name || lowerGarment === gar.name? 1.05 : 1,
+                                }}
+                        exit={{ opacity: 0, y: -100 }}
+                        transition={{velocity: 90,type: "Inertia"}}
                     />)}
                 </div>
                 <div className='gar-type-btns'>
