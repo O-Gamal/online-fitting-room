@@ -13,7 +13,7 @@ const OtherPage = () => {
   const dispatch = useDispatch()
 
   return (
-    <motion.div initial={{ opacity: 0, y:20 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -20 }}  transition={{delay: 0.2 }} className="TshirtPage">
+    <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x:0 }} exit={{ opacity: 0, x: 100 }} transition={{velocity: 90,type: "Inertia"}} className="TshirtPage">
         <h2>Add garment color:</h2>
         <div className="TshirtPage-dropZone">
             <Input className='TshirtPage-input' placeholder='Name' />

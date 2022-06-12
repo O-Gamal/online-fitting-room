@@ -23,12 +23,12 @@ export default function Admin(){
               {page!==0 &&<Link to='/admin'><i onClick={()=>dispatch(setPage(0))} className="material-icons">home</i></Link>}
           </div>
           <div  exit={{ x: 50 }} layout className='admin-body'>
-            <AnimatePresence exitBeforeEnter>
-              {page === 0 && <GarmentType/>}
-              {page === 1 && garType==='shirt' &&  <TshirtPage/>}
-              {page === 1 && garType!=='shirt' &&  <OtherPage/>}
-              {page === 2 && <BeforePreview/>}
-              {page === 3 && <Preview/>}
+            <AnimatePresence exitBeforeEnter initial={false}>
+              {page === 0 && <GarmentType key={0}/>}
+              {page === 1 && garType==='shirt' &&  <TshirtPage key={1}/>}
+              {page === 1 && garType!=='shirt' &&  <OtherPage key={2}/>}
+              {page === 2 && <BeforePreview key={3}/>}
+              {page === 3 && <Preview key={4}/>}
             </AnimatePresence>
           </div>
       </div>
