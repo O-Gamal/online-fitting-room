@@ -25,10 +25,10 @@ export default function Admin(){
           <div  exit={{ x: 50 }} layout className='admin-body'>
             <AnimatePresence exitBeforeEnter initial={false}>
               {page === 0 && <GarmentType key={0}/>}
-              {page === 1 && garType==='shirt' &&  <TshirtPage key={1}/>}
-              {page === 1 && garType!=='shirt' &&  <OtherPage key={2}/>}
-              {page === 2 && <BeforePreview key={3}/>}
-              {page === 3 && <Preview key={4}/>}
+              {page === 1 && <OtherPage key={1}/>}
+              {page === 2 && <TshirtPage key={2}/>}
+              {page === 3 && <BeforePreview key={3}/>}
+              {page === 4 && <Preview key={4}/>}
             </AnimatePresence>
           </div>
       </div>

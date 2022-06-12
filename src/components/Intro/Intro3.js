@@ -21,7 +21,8 @@ function Manual(){
           {Measurements.map(measurement => 
              <Input 
              className='measure-btn' 
-             key={measurement} 
+             key={measurement}
+             type='number'
              placeholder={measurement} 
              value={measurements[measurement]} 
              onChange={e => dispatch(setMeasurements({...measurements, [measurement] : e.target.value}))}

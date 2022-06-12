@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react'
 import { motion, AnimatePresence  } from 'framer-motion'
 import Button from '../../utilities/button/Button'
@@ -5,6 +6,8 @@ import Input from '../../utilities/input/Input'
 import './Rating.scss';
 import { useDispatch, useSelector} from 'react-redux';
 import {setNext} from '../../states/user.js';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 function Rate ({setDeal}) {
     const [rating, setRating] = useState();
@@ -20,7 +23,14 @@ function Rate ({setDeal}) {
             >
                 <h2>Please, rate the product size</h2>
                 <div className='rate-input-container'>
-                    <Input className='rate-input' placeholder='Rate / 5' onChange={(e) => setRating(e.target.value)}/>
+                    <Rating 
+                    className='rate-input' 
+                    value={rating} 
+                    onChange={(event, newValue)=>setRating(newValue)}
+                    precision={0.5} 
+                    emptyIcon={<StarIcon style={{ color: 'white' }}/>}
+                    />
+                    {/* <Input className='rate-input' placeholder='Rate / 5' onChange={(e) => setRating(e.target.value)}/> */}
                     <Button full='rate-btn' onClick={() => {dispatch(setNext('Thank You')); setDeal('rated')}}>Submit</Button>
                 </div>
             </motion.div>
@@ -29,7 +39,7 @@ function Rate ({setDeal}) {
 
 }
 
-export default function Rating({size, setDeal}) {
+export default function MyRating({size, setDeal}) {
   
     const [showRating, setShowRating] = useState(false);
     const dispatch = useDispatch();
