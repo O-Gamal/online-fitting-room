@@ -24,11 +24,11 @@ function Rate ({setDeal}) {
                 <h2>Please, rate the product size</h2>
                 <div className='rate-input-container'>
                     <Rating 
-                    className='rate-input' 
-                    value={rating} 
-                    onChange={(event, newValue)=>setRating(newValue)}
-                    precision={0.5} 
-                    emptyIcon={<StarIcon style={{ color: 'white' }}/>}
+                        className='rate-input' 
+                        value={rating} 
+                        onChange={(event, newValue)=>setRating(newValue)}
+                        precision={0.5} 
+                        emptyIcon={<StarIcon style={{ color: 'white' }}/>}
                     />
                     {/* <Input className='rate-input' placeholder='Rate / 5' onChange={(e) => setRating(e.target.value)}/> */}
                     <Button full='rate-btn' onClick={() => {dispatch(setNext('Thank You')); setDeal('rated')}}>Submit</Button>
