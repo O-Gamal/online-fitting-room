@@ -6,6 +6,7 @@ import User from './components/user/User'
 import Admin from './components/admin/Admin'
 import Main from './components/main/Main';
 import UserApp from './components/userApp/UserApp';
+import UserSettings from './components/userSettings/UserSettings';
 import './App.scss';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/admin" element={<Admin/>} />
             <Route path="/user" element={<User/>} />
             <Route path="/user/app" element={<UserApp/>} />
+            <Route path="/user/settings" element={<UserSettings/>} />
           </Routes>
         </ Router>
       </motion.div>

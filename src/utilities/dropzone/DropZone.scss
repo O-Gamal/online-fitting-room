@@ -4,6 +4,8 @@
 .dropzone{
     margin: 10px 0;
     background-color: utils.$light-gray-color;
+    color: utils.$gray-color;
+    display: flex;
 }
 
 .uploaded-image-container{
