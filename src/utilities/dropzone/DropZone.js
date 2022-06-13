@@ -20,7 +20,7 @@ const dropzoneChildren = () => (
 );
 
 
-export default function DropZone() {
+export default function DropZone({ className }) {
 
   const [image, setImage] = useState(null);
 
@@ -34,7 +34,7 @@ export default function DropZone() {
       : 
       <Dropzone
         loading={false}
-        className='dropzone'
+        className={'dropzone ' + className}
         accept={IMAGE_MIME_TYPE}
         radius={30}
         onDrop={(files) => {

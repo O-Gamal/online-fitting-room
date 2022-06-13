@@ -24,10 +24,7 @@ export default function UserApp() {
         <AnimatePresence exitBeforeEnter>
         <motion.div
             className='app-container'
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.1 }}
-            transition={{ ease: "easeInOut" , duration: 0.5}}
+
             >
             <div className='app-header'>
                 <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.name }</div>

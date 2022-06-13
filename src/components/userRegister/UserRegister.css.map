@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,IAAI,CAAJ,oCAAI;AAGJ,AAAA,mBAAmB,CAAA;EACf,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,YAAY;CAKhC;;AAVD,AAOI,mBAPe,CAOf,eAAe,CAAA;EACX,MAAM,EAAE,MAAM;CACjB",
-    "sources": [
-        "UserRegister.scss"
-    ],
-    "names": [],
-    "file": "UserRegister.css"
-}
