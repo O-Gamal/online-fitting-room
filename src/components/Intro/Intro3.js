@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React from 'react'
+import React, {useState} from 'react'
 import Button from '../../utilities/button/Button'
 import { useNavigate  } from 'react-router-dom';
 import Input from '../../utilities/input/Input'
@@ -35,38 +35,36 @@ function Manual(){
   )
 }
 
-function UploadPhoto(){
+function UploadPhoto(image, setImage){
   return(
       <>
       <h2>Upload Your Photo</h2>
-      <DropZone />
+      <DropZone image={image} setImage={setImage}/>
       </>
   )
 }
 
 export default function Intro3() {
 
-  const { measureType, user, measurements } = useSelector(state => state.user);
+  const { measureType, user, measurements, skinTone, fitPreference,  } = useSelector(state => state.user);
+  const [image, setImage] = useState('')
   const dispatch = useDispatch();
   const navigate = useNavigate ();
   
   const register = ()=>{
     let registerData='';
-    let url = '';
     if(measureType === 'Manual'){
-      registerData ={user, measurements}
-      url = '/api/register/Manual';
+      registerData ={...user, measurements, preference:fitPreference, skinTone}
     }else{
-      registerData ={user, }
-      url = '/api/register/Photo';
+      registerData ={...user, img:image, preference:fitPreference, skinTone}
     }
-    axios.post(url, registerData)
+
+    axios.post('http://localhost:4002/api/users', registerData, {headers: { 'Content-Type': 'multipart/form-data' }})
     .then(res => dispatch(setUser(res.data)))
     .then(()=>showNotification({
       title: `Hey there, your userId is ${user.name}`,
       autoClose: 3000,
       radius: '10px',
-      onClose: () => navigate("/user/app"),
       styles:{
         root:{backgroundColor:'white'},
         title: { color: 'black',fontSize: '18px',textAlign: 'left'},
@@ -76,22 +74,9 @@ export default function Intro3() {
 
   return (
     <div className='intro-container'>
-      {measureType === 'Manual' ? <Manual/> : <UploadPhoto/>} 
-        <Button 
-        pad={8} 
-        onClick={() => {
-          showNotification({
-          title: `Hey there, your userId is ${user.name}`,
-          autoClose: 3000,
-          radius: '10px',
-          onClose: () => navigate("/user/app"),
-          styles:{
-            root:{backgroundColor:'white'},
-            title: { color: 'black',fontSize: '18px',textAlign: 'left'},
-          }})
-       }}> Register</Button>
+      {measureType === 'Manual' ? <Manual/> : <UploadPhoto image={image} setImage={setImage}/>} 
+      <Button pad={8} onClick={()=>navigate("/user/app")}> Register</Button>
       <Button full='blk' pad={8} onClick={()=>dispatch(setUserPage(2))}> Back </Button>
-      
     </div>
   )
 }

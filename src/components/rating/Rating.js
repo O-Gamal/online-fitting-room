@@ -2,19 +2,26 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence  } from 'framer-motion'
 import Button from '../../utilities/button/Button'
-import Input from '../../utilities/input/Input'
 import './Rating.scss';
 import { useDispatch, useSelector} from 'react-redux';
 import {setNext} from '../../states/user.js';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import axios from 'axios';
 
 function Rate ({setDeal}) {
+
     const [rating, setRating] = useState();
     const dispatch = useDispatch();
 
+    const rateHandler = () => {
+        axios.patch('http://localhost:4002/api/ratings/rate', {user, garment, rating})
+            .then(()=>{
+                dispatch(setNext('Thank You')); 
+                setDeal('rated')
+            })
+    }
     return(
-
             <motion.div  
                 className='rate-container'
                 initial={{ opacity: 0, y: 100 }}
@@ -26,17 +33,14 @@ function Rate ({setDeal}) {
                     <Rating 
                         className='rate-input' 
                         value={rating} 
-                        onChange={(event, newValue)=>setRating(newValue)}
+                        onChange={(event, newValue)=>{setRating(newValue)}}
                         precision={0.5} 
                         emptyIcon={<StarIcon style={{ color: 'white' }}/>}
                     />
-                    {/* <Input className='rate-input' placeholder='Rate / 5' onChange={(e) => setRating(e.target.value)}/> */}
                     <Button full='rate-btn' onClick={() => {dispatch(setNext('Thank You')); setDeal('rated')}}>Submit</Button>
                 </div>
             </motion.div>
-        
     )
-
 }
 
 export default function MyRating({size, setDeal}) {
@@ -44,6 +48,14 @@ export default function MyRating({size, setDeal}) {
     const [showRating, setShowRating] = useState(false);
     const dispatch = useDispatch();
     const {garment} = useSelector(state => state.user);
+
+    const returnHandler = () => {
+        axios.patch('http://localhost:4002/api/ratings/return', {user, garment})
+        .then(()=>{
+            dispatch(setNext('Thank You')); 
+            setDeal('returned');
+        })
+    }
 
     return (
     <div className='rating-container' >
@@ -60,7 +72,7 @@ export default function MyRating({size, setDeal}) {
         {showRating && <Rate setNext={setNext} setDeal={setDeal}/>}
         </AnimatePresence>
         <motion.div layout transition={{ duration: 0.1 }} className='rating-buttons'>
-            <Button onClick={() => {dispatch(setNext('Thank You')); setDeal('returned')}}> Return the Product </Button>
+            <Button onClick={() => {dispatch(setNext('Thank You')); setDeal('returned');}}> Return the Product </Button>
             <Button onClick={() => dispatch(setNext(''))}> Buy More! </Button>
         </motion.div>
     </div>

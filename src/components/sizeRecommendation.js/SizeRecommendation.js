@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import items from '../../utilities/items'
 import Button from '../../utilities/button/Button'
 import { Tooltip } from '@mantine/core';
@@ -6,11 +6,20 @@ import { motion } from 'framer-motion'
 import './SizeRecommendation.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import {setNext, setGarment} from '../../states/user.js';
+import axios from 'axios';
 
 export default function SizeRecommendation() {
 
   const dispatch = useDispatch();
   const {garment} = useSelector(state => state.user);
+  const [isLoading, setIsloading] = useState(true);
+  const [shirts, setShirts] = useState([]);
+
+  useEffect(()=>{
+    axios.get('http://localhost:4002/api/products?size_recommendation=true')
+    .then(res=>setShirts(res.data.products))
+    .then(()=>setIsloading(false))
+  },[])
 
   return (
     <div className='size-rec-container'>
@@ -18,6 +27,7 @@ export default function SizeRecommendation() {
         <h1 className='gar-header'> Select Garment: </h1>
       </div>
       <div className='items-container'>
+        {isLoading && <p>loading...</p>}
         {items.map((item, index) => {
           return (
             <Tooltip

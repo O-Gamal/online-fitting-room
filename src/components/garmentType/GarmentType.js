@@ -40,18 +40,18 @@ export default function GarmentType({setGarmentType}) {
                     {garTypes.map((gar, index) => 
                     <motion.img 
                         id={gar.name} 
-                        className={upperGarment === gar.name || lowerGarment === gar.name? 'clicked' : ''} 
                         key={index}
                         onClick={hendleSelection} 
                         src={`/images/icons/${gar.name}.png`} 
                         alt={gar.name}
                         initial={{ opacity: 0, y:100 }}
                         animate={{  opacity: 1,
-                                    y:0,
-                                    scale: upperGarment === gar.name || lowerGarment === gar.name? 1.05 : 1,
-                                }}
+                            y:0,
+                            scale: upperGarment === gar.name || lowerGarment === gar.name? 1.05 : 1,
+                        }}
                         exit={{ opacity: 0, y: -100 }}
                         transition={{velocity: 90,type: "Inertia"}}
+                        className={upperGarment === gar.name || lowerGarment === gar.name? 'clicked' : ''} 
                     />)}
                 </div>
                 <div className='gar-type-btns'>

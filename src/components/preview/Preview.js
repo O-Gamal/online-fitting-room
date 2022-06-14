@@ -1,21 +1,41 @@
 /* eslint-disable */ 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Button from '../../utilities/button/Button'
 import { motion }  from 'framer-motion'
 import './Preview.scss'
 import items from '../../utilities/items'
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {setNext} from '../../states/user.js';
+import axios from 'axios';
 
 export default function Preview() {
 
     const ref = useRef();
-    const [pose, setPose] = useState(0);
-    // 0:T 1:I 2:A
     const dispatch = useDispatch();
     const [selectedItem, setSelectedItem] = useState(0);
+    const [selectedUpper, setSelectedUpper] = useState(0);
+    const [selectedLower, setSelectedLower] = useState(0);
+    const {upperGarment, lowerGarment} = useSelector(state => state.user);
+    const [lowerGarments, setLowerGarments] = useState(null);
+    const [upperGarments, setUpperGarments] = useState(null);
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:4002/api/products?upper=${upperGarment}&lower=${lowerGarment}`)
+            .then(res=>{
+                setLowerGarments(res.data.lower);
+                setUpperGarments(res.data.upper);
+            })
+        axios.post('',{user, garment, pose})
+        .then((res)=>{})
+    },[])
+
+    const previewHandler = () =>{
+        axios.post('',{user, garment, pose})
+        .then((res)=>{})
+    }
 
   return (
       <div className='preview'>
