@@ -17,8 +17,11 @@ export default function UserLogin() {
   const navigate = useNavigate();
 
   const login = () => {
-    axios.post('/api/login', userId)
-        .then(res => dispatch(setUser(res.data)))
+    axios.post('https://localhost:4002/api/users/login', userId)
+        .then(res => {
+          if(!res.data.user) throw new Error;
+          dispatch(setUser(res.data.user))
+        })
         .then(()=>navigate("/user/app"))
         .catch(() => setIsError(true))
   }
@@ -30,7 +33,8 @@ export default function UserLogin() {
       className='login-container' >
       <h2 className='login-title'>Enter Your Id Below:</h2>
       <Input placeholder='User Id' type='text' className='login-input' value={userId} onChange={e => setUserId(e.target.value)}/>
-      <Button full='login-button' onClick={login}> Login </Button>   
+      <Button full='login-button' onClick={login}> Login </Button>
+      {isError && <p style={{color:'red'}}> wrong userId</p>}   
     </motion.div>
   )
 }

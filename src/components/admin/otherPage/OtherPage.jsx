@@ -11,12 +11,13 @@ import axios from 'axios';
 const OtherPage = () => {
 
   const [color, setColor] = useState('');
+  const [name, setName] = useState('')
   const dispatch = useDispatch();
   const {garType} = useSelector((state) => state.admin);
 
   const generateGarment = () => {
-    const data = { color, garType };
-    axios.post('https://api/generateGarment', data)
+    const data = { color, type:garType, name };
+    axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
         .then(response => dispatch(setGeneratedGar(response.data)))
         .then(()=>dispatch(setPage(4)))
   }
@@ -25,7 +26,7 @@ const OtherPage = () => {
     <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="TshirtPage">
         <h2>Add garment color:</h2>
         <div className="TshirtPage-dropZone">
-            <Input className='TshirtPage-input' placeholder='Name' />
+            <Input className='TshirtPage-input' placeholder='Name' value={name} onChange={e=>setName(e.target.value)} />
             <ColorInput  
             placeholder="Color"
             value={color} 

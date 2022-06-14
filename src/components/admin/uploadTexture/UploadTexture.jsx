@@ -14,10 +14,11 @@ const UploadTexture = () => {
   const dispatch = useDispatch();
   const {garType} = useSelector((state) => state.admin);
   const [image, setImage] = useState(null)
+  const [name, setName] = useState('')
 
   const generateGarment = () => {
-    const data = { garType, image };
-    axios.post('https://api/generateGarment', data)
+    const data = { type:garType, name, imgs:[image],  };
+    axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
         .then(response => dispatch(setGeneratedGar(response.data)))
         .then(()=>dispatch(setPage(4)))
   }
@@ -26,7 +27,7 @@ const UploadTexture = () => {
     <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="UploadTexture">
         <h2>Add garment details:</h2>
         <div className="UploadTexture-dropZone">
-          <Input className='UploadTexture-input' placeholder='Name' />
+          <Input className='UploadTexture-input' placeholder='Name' value={name} onChange={e=>setName(e.target.value)}/>
           <div className="UploadTexture-drops">
             <DropZone image={image} setImage={setImage}/>
           </div>

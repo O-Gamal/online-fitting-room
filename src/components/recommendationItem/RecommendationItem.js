@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../../utilities/button/Button'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
@@ -6,19 +6,34 @@ import { motion } from 'framer-motion'
 import './RecommendationItem.scss'
 import { useDispatch, useSelector} from 'react-redux';
 import {setNext} from '../../states/user.js';
+import axios from 'axios';
 
 export default function RecommendationItem({setSize, size}) {
 
-  const [pose, setPose] = useState(0);
-  // 0:T 1:I 2:A
-
-  const [recomendedSize, setRecomendedSize] = useState('M');
-  const [StandardSize, setStandardSize] = useState('L');
-  
+  const [recomendedSize, setRecomendedSize] = useState('loading...');
+  const [StandardSize, setStandardSize] = useState('loading...');
   const dispatch = useDispatch();
-  const {garment} = useSelector(state => state.user);
-
+  const {garment, user} = useSelector(state => state.user);
   const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+
+  useEffect(()=>{
+    axios.post('',{garment, user, pose:'T'})
+    .then((res)=>res.data)
+    axios.post('',{garment, user})
+    .then((res)=>setRecomendedSize(res.data))
+    axios.post('',{garment, user})
+    .then((res)=>setStandardSize(res.data))
+  },[])
+
+  const changePose = (pose)=>{
+    axios.post('',{garment, user, pose})
+    .then((res)=>res.data)
+  }
+
+  const buyHandler = ()=>{
+    axios.post('http://localhost:4002/api/ratings/buy',{garment, user, size})
+    .then(()=>dispatch(setNext('Rating')))
+  }
 
   return (
     <div className='recommendation-item-container'>
@@ -62,9 +77,9 @@ export default function RecommendationItem({setSize, size}) {
                     <OrbitControls />
                 </Canvas>
                 <div className='pose-btns'>
-                <Button val={0} full='pose-btn' onClick={()=> setPose(0)}> T </Button>
-                    <Button val={1} full='pose-btn' onClick={()=> setPose(1)}> I </Button>
-                    <Button val={2} full='pose-btn' onClick={()=> setPose(2)}> A </Button>
+                    <Button  full='pose-btn' onClick={()=> changePose('T')}> T </Button>
+                    <Button  full='pose-btn' onClick={()=> changePose('I')}> I </Button>
+                    <Button  full='pose-btn' onClick={()=> changePose('A')}> A </Button>
                 </div>
             </div>
       </div>
