@@ -31,35 +31,30 @@
             }
 
         }
-
         .clicked{
             background: linear-gradient(utils.$light-gray-color, utils.$light-gray-color) padding-box,
             utils.$background-image border-box;
             border: 3px solid transparent;
-        }
-
-        
+        } 
     }
     
     .gar-type-btns{
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80%;
+        width: 40%;
+        gap:25px;
         .gar-type-btn{
             width: 45%;
             cursor: pointer;
-
             &:hover{
                 background-color: utils.$white-color;
                 color: utils.$black-color;
             }
         }
     }
-
     .garType2btns{
-        width: 40%;
-        gap:20px;
+        width: 55%;
     }
 }
 

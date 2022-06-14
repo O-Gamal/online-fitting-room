@@ -18,7 +18,8 @@ export default function GarmentType() {
                 </div>
                 <div className={'gar-type-btns ' +  (garType==='shirt'?'garType2btns':'')}>
                     <Button onClick={()=>dispatch(setPage(1))} full='gar-type-btn' pad='12px' > Add color </Button>
-                    { garType==='shirt' && <Button onClick={()=>dispatch(setPage(2))} full='gar-type-btn' pad='12px' > Add texture </Button>}
+                    <Button onClick={()=>dispatch(setPage(2))} full='gar-type-btn' pad='12px' > Add texture </Button>
+                    { garType==='shirt' && <Button onClick={()=>dispatch(setPage(3))} full='gar-type-btn' pad='12px' > Add Photos </Button>}
                 </div>
             </motion.div>
   )

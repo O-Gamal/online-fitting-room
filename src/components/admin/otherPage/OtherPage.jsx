@@ -3,14 +3,23 @@ import { ColorInput } from '@mantine/core';
 import Button from '../../../utilities/button/Button';
 import Input from '../../../utilities/input/Input';
 import './OtherPage.scss';
-import { useDispatch } from 'react-redux';
-import { setPage} from '../../../states/admin.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPage, setGeneratedGar} from '../../../states/admin.js';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const OtherPage = () => {
 
   const [color, setColor] = useState('');
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const {garType} = useSelector((state) => state.admin);
+
+  const generateGarment = () => {
+    const data = { color, garType };
+    axios.post('https://api/generateGarment', data)
+        .then(response => dispatch(setGeneratedGar(response.data)))
+        .then(()=>dispatch(setPage(4)))
+  }
 
   return (
     <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="TshirtPage">
@@ -29,7 +38,7 @@ const OtherPage = () => {
         </div>
         <div className="TshirtPage-btns">
             <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
-            <Button onClick={()=>dispatch(setPage(3))}  pad={12}>Add</Button>
+            <Button onClick={()=>dispatch(setPage(4))}  pad={12}>Add</Button>
         </div>
     </motion.div>
   )

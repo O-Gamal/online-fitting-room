@@ -7,10 +7,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap:30px;
+    padding-top:15px;
+
+  .preview-btns{
+    width:30%;
+  }
 
   .preview-container {
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
     border-radius: utils.$radius;
 
     .canvas-container {

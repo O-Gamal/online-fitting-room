@@ -1,6 +1,6 @@
 /* eslint-disable*/
-import React from 'react';
-import './TshirtPage.scss';
+import React, {useState} from 'react';
+import './UploadTexture.scss';
 import Button from '../../../utilities/button/Button';
 import Input from '../../../utilities/input/Input';
 import { useDispatch,  useSelector } from 'react-redux';
@@ -9,31 +9,29 @@ import DropZone from '../../../utilities/dropzone/DropZone';
 import {motion} from 'framer-motion';
 import axios from 'axios';
 
-const TshirtPage = () => {
+const UploadTexture = () => {
 
   const dispatch = useDispatch();
   const {garType} = useSelector((state) => state.admin);
-  const [image1, setImage1] = useState(null)
-  const [image2, setImage2] = useState(null)
+  const [image, setImage] = useState(null)
 
   const generateGarment = () => {
-    const data = { garType, image1, image2 };
+    const data = { garType, image };
     axios.post('https://api/generateGarment', data)
         .then(response => dispatch(setGeneratedGar(response.data)))
         .then(()=>dispatch(setPage(4)))
   }
-  
+
   return (
-    <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="TshirtPage">
+    <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="UploadTexture">
         <h2>Add garment details:</h2>
-        <div className="TshirtPage-dropZone">
-          <Input className='TshirtPage-input' placeholder='Name' />
-          <div className="TshirtPage-drops">
-            <DropZone image={image1} setImage={setImage1}/>
-            <DropZone image={image2} setImage={setImage2}/>
+        <div className="UploadTexture-dropZone">
+          <Input className='UploadTexture-input' placeholder='Name' />
+          <div className="UploadTexture-drops">
+            <DropZone image={image} setImage={setImage}/>
           </div>
         </div>
-        <div className="TshirtPage-btns">
+        <div className="UploadTexture-btns">
           <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
           <Button onClick={()=>dispatch(setPage(4))}  pad={12}>Add</Button>
         </div>
@@ -41,4 +39,4 @@ const TshirtPage = () => {
   )
 }
 
-export default TshirtPage
+export default UploadTexture;

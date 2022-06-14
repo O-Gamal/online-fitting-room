@@ -13,7 +13,7 @@ const OtherPage = () => {
     <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className="beforePreview">
         <h2>Product has been added</h2>
         <div className="beforePreview-btns">
-            <Button onClick={()=>dispatch(setPage(4))}  pad={12}>Preview</Button>
+            <Button onClick={()=>dispatch(setPage(5))}  pad={12}>Preview</Button>
             <Button onClick={()=>dispatch(setPage(0))}  pad={12}>Add More</Button>
         </div>
     </motion.div>

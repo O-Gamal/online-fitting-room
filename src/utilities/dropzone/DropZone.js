@@ -20,10 +20,7 @@ const dropzoneChildren = () => (
 );
 
 
-export default function DropZone({ className }) {
-
-  const [image, setImage] = useState(null);
-
+export default function DropZone({ className, image, setImage }) {
   return (
     <div>
         {image !== null ? 
