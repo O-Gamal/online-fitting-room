@@ -1,4 +1,4 @@
-import React, {useSelector} from 'react'
+import React, {useState} from 'react'
 import Button from '../../utilities/button/Button'
 import { motion } from 'framer-motion'
 import Input from '../../utilities/input/Input'
@@ -6,12 +6,13 @@ import './UserLogin.scss';
 import axios from 'axios';
 import { useNavigate  } from 'react-router-dom';
 import {setUser} from '../../states/user.js';
+import {useDispatch} from 'react-redux';
 
 
-export default function userLogin() {
+export default function UserLogin() {
 
   const [userId , setUserId] = useState('');
-  const [isError , setIsError] = useState(flase);
+  const [isError , setIsError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

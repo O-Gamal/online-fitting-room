@@ -8,7 +8,7 @@ import { setPage, setGarType } from '../../../states/admin.js';
 export default function GarmentType() {
 
     const {garType, garTypes} = useSelector((state) => state.admin);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() 
 
     return (
             <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -100 }} transition={{velocity: 90,type: "Inertia"}} className='garType'>
