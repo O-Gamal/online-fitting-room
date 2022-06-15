@@ -15,26 +15,20 @@ export default function Preview() {
     const ref = useRef();
     const dispatch = useDispatch();
     const [selectedItem, setSelectedItem] = useState(0);
-    const [selectedUpper, setSelectedUpper] = useState(0);
-    const [selectedLower, setSelectedLower] = useState(0);
     const {upperGarment, lowerGarment} = useSelector(state => state.user);
     const [lowerGarments, setLowerGarments] = useState(null);
     const [upperGarments, setUpperGarments] = useState(null);
+    const [pose, setPose] = useState(0);
 
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:4002/api/products?upper=${upperGarment}&lower=${lowerGarment}`)
+    //         .then(res=>setLowerGarments(res.data.lower))
+    //         .then(res=>setUpperGarments(res.data.upper));
+    //     axios.post('http://localhost:4002/api/products',{user, garment, pose});
+    // },[])
 
-    useEffect(()=>{
-        axios.get(`http://localhost:4002/api/products?upper=${upperGarment}&lower=${lowerGarment}`)
-            .then(res=>{
-                setLowerGarments(res.data.lower);
-                setUpperGarments(res.data.upper);
-            })
-        axios.post('',{user, garment, pose})
-        .then((res)=>{})
-    },[])
-
-    const previewHandler = () =>{
-        axios.post('',{user, garment, pose})
-        .then((res)=>{})
+    const previewHandler = () => {
+        axios.post('http://localhost:4002/api/products',{user, garment, pose})
     }
 
   return (
@@ -45,7 +39,6 @@ export default function Preview() {
                     <mesh>
                         <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
                         <meshBasicMaterial attach="material" color="red" />
-                        
                     </mesh>
                     <OrbitControls />
                 </Canvas>
@@ -64,20 +57,18 @@ export default function Preview() {
                                 className={'item ' + item.id}
                                 key={index}
                                 whileHover={{ scale: 1.03  ,transition: { duration: 0.2 } }}
-                                // whileTap={{ scale: 0.95  ,transition: { duration: 0.3 } }}
                                 onClick={e => setSelectedItem(item.id)}
                             >
                                 <div className='item-image'>
-                                    <img className={selectedItem == item.id ? 'selected' : ''} src={item.image}/>
+                                    <img className={selectedItem === item.id ? 'selected' : ''} src={item.image}/>
                                 </div>
                             </motion.div>
                         )         
                     })}
                 </motion.div>
             </div>
-            
         </div>
-        <Button full='back-btn' onClick={()=>{dispatch(setNext(''))}}> Back </Button>
+        <Button full='back-btn' onClick={()=>dispatch(setNext(''))}> Back </Button>
     </div>
   )
 }

@@ -9,7 +9,7 @@ const initialState = {
     user: {
         name: 'ahmed',
         age: 23,
-        gender: 'male',
+        gender: '',
         userId:'34567',
     },
     fitPreference: 'Perfect',
