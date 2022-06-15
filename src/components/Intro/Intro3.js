@@ -47,7 +47,7 @@ function UploadPhoto(image, setImage){
 export default function Intro3() {
 
   const { measureType, user, measurements, skinTone, fitPreference,  } = useSelector(state => state.user);
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate ();
   
@@ -74,7 +74,7 @@ export default function Intro3() {
 
   return (
     <div className='intro-container'>
-      {measureType === 'Manual' ? <Manual/> : <UploadPhoto image={image} setImage={setImage}/>} 
+      {measureType === 'Manual' ? <Manual/> : <><h2>Upload Your Photo</h2><DropZone image={image} setImage={setImage}/></>} 
       <Button pad={8} onClick={()=>navigate("/user/app")}> Register</Button>
       <Button full='blk' pad={8} onClick={()=>dispatch(setUserPage(2))}> Back </Button>
     </div>

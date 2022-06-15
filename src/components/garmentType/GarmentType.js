@@ -6,23 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setNext, setUpperGarment, setLowerGarment} from '../../states/user.js';
 import { motion } from 'framer-motion';
 
-export default function GarmentType({setGarmentType}) {
+export default function GarmentType() {
 
     const dispatch = useDispatch();
     const {lowerGarment, upperGarment} = useSelector(state => state.user);
 
     const garTypes = [
-            {name: 'shirt',type: 'upper'},
-            {name: 'pants',type: 'lower'},
-            {name: 'short',type: 'lower'},
-            {name: 'skirt',type: 'lower'}
+            {name: 'shirt'},
+            {name: 'pants'},
+            {name: 'short'},
+            {name: 'skirt'}
     ];
     
     const hendleSelection = (e) => {
         e.preventDefault();
         if(lowerGarment===e.target.id) return dispatch(setLowerGarment(''));
         if(upperGarment===e.target.id) return dispatch(setUpperGarment(''));
-        setGarmentType(e.target.id)
         if(e.target.id === 'shirt') {
             dispatch(setUpperGarment(e.target.id));
         }else{

@@ -13,21 +13,16 @@ import {setNext} from '../../states/user.js';
 
 export default function UserApp() {
 
-    const {next, user} = useSelector(state => state.user);
     const dispatch = useDispatch();
-
-    const [garmentType, setGarmentType] = useState({'shirt': false, 'pants': false, 'short': false, 'skirt': false});
+    const {next, user} = useSelector(state => state.user);
     const [size, setSize] = useState('');
     const [deal, setDeal] = useState('');
 
     return (
         <AnimatePresence exitBeforeEnter>
-        <motion.div
-            className='app-container'
-
-            >
+        <motion.div className='app-container'>
             <div className='app-header'>
-                <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.name }</div>
+                <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.userId }</div>
                 <nav>
                     <ul>
                         { next === '' && <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>}
@@ -37,8 +32,8 @@ export default function UserApp() {
                 </nav>
             </div>
             <div className='app-body'>
-                {next === '' && <GarmentType setGarmentType={setGarmentType} garmentType={garmentType} />}
-                {next === 'Try-On' && <Preview garmentType={garmentType}/>}
+                {next === '' && <GarmentType/>}
+                {next === 'Try-On' && <Preview />}
                 {next === 'Size Recommendation' && <SizeRecommendation />}
                 {next === 'Recommendation Item' && <RecommendationItem setSize={setSize} size={size}/>}
                 {next === 'Rating' && <Rating  size={size} setDeal={setDeal}/>}
