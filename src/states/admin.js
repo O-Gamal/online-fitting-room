@@ -5,7 +5,7 @@ const initialState = {
     garType: 'shirt',
     garTypes: ['t-shirt', 'pant', 'short-pant', 'skirt'],
     generatedGar: '',
-    garGender:'',
+    garGender:'male',
   }
   
   export const admin = createSlice({
@@ -19,7 +19,7 @@ const initialState = {
         state.garType = action.payload;
       },
       setGeneratedGar: (state , action) => {
-        state.garType = action.payload;
+        state.generatedGar = action.payload;
       },
       setGarGender : (state , action) => {
         state.garGender = action.payload;

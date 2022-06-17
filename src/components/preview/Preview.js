@@ -15,21 +15,32 @@ export default function Preview() {
     const ref = useRef();
     const dispatch = useDispatch();
     const [selectedItem, setSelectedItem] = useState(0);
-    const {upperGarment, lowerGarment} = useSelector(state => state.user);
+    const {upperGarment, lowerGarment, user} = useSelector(state => state.user);
     const [lowerGarments, setLowerGarments] = useState(null);
     const [upperGarments, setUpperGarments] = useState(null);
     const [pose, setPose] = useState(0);
 
     // useEffect(()=>{
-    //     axios.get(`http://localhost:4002/api/products?upper=${upperGarment}&lower=${lowerGarment}`)
-    //         .then(res=>setLowerGarments(res.data.lower))
-    //         .then(res=>setUpperGarments(res.data.upper));
-    //     axios.post('http://localhost:4002/api/products',{user, garment, pose});
+    //     axios.get(`http://localhost:4002/api/products/{upperGarment}`)
+    //         .then(res=>setUpperGarments(res.data))
+    //     axios.post(`http://localhost:4002/api/products/{lowerGarment}`);
+    //         .then(res=>setLowerGarments(res.data))
+    //     axios.post(`http://localhost:4002/api/smpl/showsmpl`,{})
     // },[])
 
     const previewHandler = () => {
-        axios.post('http://localhost:4002/api/products',{user, garment, pose})
+        axios.post('http://localhost:4002/api/smpl/showsmpl',
+        {products_id:'', pose, sizes:['L']})
+        .then((res)=>console.log(res.data))
+        .catch(err=>console.log(err))
     }
+    useEffect(()=>{
+        previewHandler();
+    },[])
+
+    useEffect(()=>{
+        previewHandler();
+    },[pose])
 
   return (
       <div className='preview'>

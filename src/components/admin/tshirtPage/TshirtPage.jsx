@@ -11,7 +11,7 @@ import axios from 'axios';
 const TshirtPage = () => {
 
   const dispatch = useDispatch();
-  const {garType} = useSelector((state) => state.admin);
+  const {garType, garGender} = useSelector((state) => state.admin);
   const [image1, setImage1] = useState(null);
   const [name, setName] = useState('');
 
@@ -21,7 +21,7 @@ const TshirtPage = () => {
       image1.set(key,data[key])
     }
     axios.post('http://localhost:4002/api/products', image1)
-        .then(response => dispatch(setGeneratedGar(response.data)))
+        .then(response => dispatch(setGeneratedGar(response.data.product)))
         .then(()=>dispatch(setPage(4)))
   }
   

@@ -23,7 +23,7 @@ const UploadTexture = () => {
     for(const key in data) image.set(key,data[key])
   
     axios.post('http://localhost:4002/api/products', image)
-        .then(response => dispatch(setGeneratedGar(response.data)))
+        .then(response => dispatch(setGeneratedGar(response.data.product)))
         .then(()=>dispatch(setPage(4)))
         .catch(error=>console.log(error))
   }

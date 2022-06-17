@@ -16,13 +16,14 @@ const initialState = {
     fitPreference: 'Perfect',
     skinTone:'Midset',
     measurements: {
-        height: 0,
-        weight: 0,
         chest: 0,
-        waist: 0,
-        hips: 0,
-        arm_length: 0,
+        height: 0,
         inseam: 0,
+        hips: 0,
+        shoulder: 0,
+        waist: 0,
+        weight: 0,
+        arm_length: 0,
         neckline :0,
     },
     measureType: 'Manual',
@@ -36,7 +37,7 @@ const initialState = {
       {name:'White', color:'#f3cca9'},
     ],
     measurementTypes: ['Manual', 'Upload Photo'],
-    Measurements: ['height', 'weight', 'chest', 'waist', 'hips', 'arm_length', 'inseam', 'neckline'],
+    Measurements: ['height', 'weight', 'chest', 'waist', 'hips', 'arm_length', 'inseam', 'neckline', 'shoulder'],
   }
   
   export const user = createSlice({

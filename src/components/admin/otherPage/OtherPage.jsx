@@ -13,14 +13,14 @@ const OtherPage = () => {
   const [color, setColor] = useState('');
   const [name, setName] = useState('')
   const dispatch = useDispatch();
-  const {garType} = useSelector((state) => state.admin);
+  const {garType, garGender} = useSelector((state) => state.admin);
 
   const generateGarment = () => {
     const data = { garGender, color, type:garType, name };
     axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
         .then(response =>{ 
-          console.log(response.data);
-          dispatch(setGeneratedGar(response.data))
+          console.log('hey1:',response.data.product);
+          dispatch(setGeneratedGar(response.data.product))
           
         })
         .then(()=>dispatch(setPage(4)))
