@@ -7,7 +7,7 @@ import './SizeRecommendation.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import {setNext, setGarment} from '../../states/user.js';
 import axios from 'axios';
-
+const backendpath = "../backend" 
 export default function SizeRecommendation() {
 
   const dispatch = useDispatch();
@@ -17,7 +17,10 @@ export default function SizeRecommendation() {
 
   useEffect(()=>{
     axios.get('http://localhost:4002/api/products?size_recommendation=true')
-    .then(res=>setShirts(res.data.products))
+    .then(res=>{
+      console.log(res);
+      setShirts(res.data.products)
+    })
     .then(()=>setIsloading(false))
   },[])
 
@@ -28,7 +31,7 @@ export default function SizeRecommendation() {
       </div>
       <div className='items-container'>
         {isLoading && <p>loading...</p>}
-        {items.map((item, index) => {
+        {shirts.map((item, index) => {
           return (
             <Tooltip
               key={index}
@@ -41,10 +44,9 @@ export default function SizeRecommendation() {
             <motion.div 
               className= {garment === item.name ? 'item-container selected' : 'item-container'}
               whileHover={{ scale: 1.1  ,transition: { duration: 0.3 } }}
-              onClick={e => dispatch(setGarment(item.name))}
+              onClick={e => dispatch(setGarment(item))}
             >
-              <img className='item-image' src={item.image} alt={item.name}/>
-              {/* <div className='item-name'>{item.name}</div> */}
+              <img className='item-image' src={`/${item.front}`} alt={item.name}/>
             </motion.div>
             </Tooltip>
           )

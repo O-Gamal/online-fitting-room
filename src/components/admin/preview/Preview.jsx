@@ -1,17 +1,33 @@
 /* eslint-disable */
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Button from '../../../utilities/button/Button';
 import './Preview.scss';
 import {motion} from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch,  useSelector } from 'react-redux';
 import { setPage } from '../../../states/admin.js';
+import axios from 'axios'
 
 export default function Preview() {
 
-    const [pose, setPose] = useState(0);
+    const [pose, setPose] = useState('T');
+    const {generatedGar} = useSelector((state) => state.admin);
+    const {user} = useSelector((state) => state.user);
+
     const dispatch = useDispatch();
+
+    const previewHandler = () => {
+        axios.post('http://localhost:4002/api/smpl/showsmpl',
+        {user_id:user.userId, product_id:[generatedGar.product_id], pose})
+    }
+    useEffect(()=>{
+        previewHandler();
+    },[])
+
+    // useEffect(()=>{
+        
+    // },[])
     
     return (
         <motion.div initial={{ opacity: 0, y:100 }} animate={{ opacity: 1, y:0 }} exit={{ opacity: 0, y: -50 }} transition={{velocity: 90,type: "Inertia"}} className='admin-preview'>
@@ -25,9 +41,9 @@ export default function Preview() {
                         <OrbitControls />
                     </Canvas>
                     <div className='pose-btns'>
-                        <Button val={0} full='pose-btn' onClick={()=> setPose(0)}> T </Button>
-                        <Button val={1} full='pose-btn' onClick={()=> setPose(1)}> I </Button>
-                        <Button val={2} full='pose-btn' onClick={()=> setPose(2)}> A </Button>
+                        <Button  full='pose-btn' onClick={()=> setPose('T')}> T </Button>
+                        <Button  full='pose-btn' onClick={()=> setPose('I')}> I </Button>
+                        <Button  full='pose-btn' onClick={()=> setPose('A')}> A </Button>
                     </div>
                 </div>
             </div>

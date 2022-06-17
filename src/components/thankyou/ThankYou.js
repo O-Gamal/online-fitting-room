@@ -42,7 +42,7 @@ export default function  ThankYou({ deal, size }) {
   return (
     <div className='thank-you'>
         <h1>Thank You</h1>
-        <h2>Product {garment} with size {size} has been {deal}</h2>
+        <h2>Product {garment.name} with size {size} has been {deal}</h2>
 
         <p>Redirecting back to select new item</p>
         <Loader />

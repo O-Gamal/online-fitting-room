@@ -12,14 +12,11 @@ import Radio from "../../utilities/radio/Radio";
 import DropZone from "../../utilities/dropzone/DropZone";
 
 export default function UserSettings() {
-  const { measurements, Measurements, fitPreferences, skinTones } = useSelector(
-    (state) => state.user
-  );
+  const { measurements, Measurements, fitPreferences, skinTones, fitPreference, skinTone } = useSelector((state) => state.user);
 
   const [measurementState, setMeasurementsState] = useState(measurements);
-  const [fitPreferencesState, setFitPreferencesState] =
-    useState(fitPreferences);
-  const [skinTonesState, setSkinTonesState] = useState(skinTones);
+  const [fitPreferencesState, setFitPreferencesState] = useState(fitPreference);
+  const [skinTonesState, setSkinTonesState] = useState(skinTone);
 
   const dispatch = useDispatch();
 
@@ -28,6 +25,33 @@ export default function UserSettings() {
     dispatch(setFitPreference(fitPreferencesState));
     dispatch(setSkinTone(skinTonesState));
   };
+
+  const update = ()=>{
+    let registerData='';
+    if(measureType === 'Manual'){
+       options= {headers: { 'Content-Type': 'application/json' }}
+      registerData ={...user, measurements:{...measurements}, preference:fitPreference, skinTone}
+    }else{
+      registerData ={...user, preference:fitPreference, skinTone}
+      for(const key in registerData){
+        image.set(key,registerData[key])
+      }
+       options = {headers: { 'Content-Type': 'multipart/form-data' }}
+       
+    }
+    console.log("this is registerred",registerData);
+    axios.post('http://localhost:4002/api/users/register',image?image:registerData)
+    .then((res) =>{console.log(res.data); dispatch(setUser(res.data.user))})
+    .then(()=>showNotification({
+      title: `Hey there, your userId is ${user.name}`,
+      autoClose: 3000,
+      radius: '10px',
+      styles:{
+        root:{backgroundColor:'white'},
+        title: { color: 'black',fontSize: '18px',textAlign: 'left'},
+      }}))
+    .catch(e=>console.error(e))
+  }
 
   return (
     <motion.div className="settings-container">
@@ -90,6 +114,7 @@ export default function UserSettings() {
                   label={preference}
                   name="fit"
                   value={preference}
+                  checked={fitPreferencesState===preference}
                   onChange={() => setFitPreferencesState(preference)}
                 />
               );
@@ -104,8 +129,9 @@ export default function UserSettings() {
                   label={tone.name}
                   name="skin"
                   color={tone.color}
-                  value={tone.value}
-                  onChange={() => setSkinTonesState(tone)}
+                  value={tone.name}
+                  onChange={() => setSkinTonesState(tone.name)}
+                  checked={skinTonesState===tone.name}
                 />
               );
             })}

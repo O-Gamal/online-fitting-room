@@ -2,15 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     next:'',
+    transaction:'',
     garment:'',
-    lowerGarment:'pants',
+    lowerGarment:'pant',
     upperGarment:'',
     userPage: 1,
     user: {
         name: 'ahmed',
         age: 23,
         gender: '',
-        userId:'34567',
+        user_id:1,
     },
     fitPreference: 'Perfect',
     skinTone:'Midset',
@@ -72,10 +73,13 @@ const initialState = {
       setLowerGarment: (state, action) => {
         state.lowerGarment = action.payload;
       },
+      setTransaction: (state,action) => {
+        state.transaction = action.payload;
+      },
     },
   })
   
 
-  export const { setUserPage, setUser, setMeasurements, setFitPreference, setSkinTone, setMeasureType, setNext, setGarment, setLowerGarment, setUpperGarment} = user.actions
+  export const { setTransaction, setUserPage, setUser, setMeasurements, setFitPreference, setSkinTone, setMeasureType, setNext, setGarment, setLowerGarment, setUpperGarment, } = user.actions
   
   export default user.reducer;

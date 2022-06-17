@@ -22,7 +22,7 @@ export default function UserApp() {
         <AnimatePresence exitBeforeEnter>
         <motion.div className='app-container'>
             <div className='app-header'>
-                <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.userId }</div>
+                <div className='welcome-user'><i className="material-icons">account_circle</i> Hello { user.name }</div>
                 <nav>
                     <ul>
                         { next === '' && <li><Link to='/user/settings'><i className="material-icons">settings</i></Link></li>}

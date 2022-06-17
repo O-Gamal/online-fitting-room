@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     page: 0,
     garType: 'shirt',
-    garTypes: ['shirt', 'pants', 'short', 'skirt'],
+    garTypes: ['t-shirt', 'pant', 'short-pant', 'skirt'],
     generatedGar: '',
+    garGender:'',
   }
   
   export const admin = createSlice({
@@ -20,9 +21,12 @@ const initialState = {
       setGeneratedGar: (state , action) => {
         state.garType = action.payload;
       },
+      setGarGender : (state , action) => {
+        state.garGender = action.payload;
+      }
     },
   })
   
-  export const { setPage, setGarType, setGeneratedGar } = admin.actions;
+  export const { setPage, setGarType, setGeneratedGar, setGarGender } = admin.actions;
   
   export default admin.reducer;

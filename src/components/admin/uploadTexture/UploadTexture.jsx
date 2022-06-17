@@ -10,17 +10,22 @@ import {motion} from 'framer-motion';
 import axios from 'axios';
 
 const UploadTexture = () => {
-
+  
   const dispatch = useDispatch();
-  const {garType} = useSelector((state) => state.admin);
+  const {garType, garGender} = useSelector((state) => state.admin);
   const [image, setImage] = useState(null)
   const [name, setName] = useState('')
+  
 
+  
   const generateGarment = () => {
-    const data = { type:garType, name, imgs:[image],  };
-    axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
+    const data = { garGender, type:garType, name,  };
+    for(const key in data) image.set(key,data[key])
+  
+    axios.post('http://localhost:4002/api/products', image)
         .then(response => dispatch(setGeneratedGar(response.data)))
         .then(()=>dispatch(setPage(4)))
+        .catch(error=>console.log(error))
   }
 
   return (
@@ -34,7 +39,7 @@ const UploadTexture = () => {
         </div>
         <div className="UploadTexture-btns">
           <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
-          <Button onClick={()=>dispatch(setPage(4))}  pad={12}>Add</Button>
+          <Button onClick={generateGarment}  pad={12}>Add</Button>
         </div>
     </motion.div>
   )

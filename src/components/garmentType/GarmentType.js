@@ -12,9 +12,9 @@ export default function GarmentType() {
     const {lowerGarment, upperGarment} = useSelector(state => state.user);
 
     const garTypes = [
-            {name: 'shirt'},
-            {name: 'pants'},
-            {name: 'short'},
+            {name: 't-shirt'},
+            {name: 'pant'},
+            {name: 'short-pant'},
             {name: 'skirt'}
     ];
     
@@ -22,7 +22,7 @@ export default function GarmentType() {
         e.preventDefault();
         if(lowerGarment===e.target.id) return dispatch(setLowerGarment(''));
         if(upperGarment===e.target.id) return dispatch(setUpperGarment(''));
-        if(e.target.id === 'shirt') {
+        if(e.target.id === 't-shirt') {
             dispatch(setUpperGarment(e.target.id));
         }else{
             dispatch(setLowerGarment(e.target.id));

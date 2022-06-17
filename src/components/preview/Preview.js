@@ -37,15 +37,15 @@ export default function Preview() {
             <div className='canvas-container'>
                 <Canvas className='canvas'>
                     <mesh>
-                        <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+                        <boxBufferGeometry attach="geometry" args={[1, 5, 1]} />
                         <meshBasicMaterial attach="material" color="red" />
                     </mesh>
                     <OrbitControls />
                 </Canvas>
                 <div className='pose-btns'>
-                    <Button val={0} full='pose-btn' onClick={()=> setPose(0)}> T </Button>
-                    <Button val={1} full='pose-btn' onClick={()=> setPose(1)}> I </Button>
-                    <Button val={2} full='pose-btn' onClick={()=> setPose(2)}> A </Button>
+                    <Button val={0} full='pose-btn' onClick={()=> setPose('T')}> T </Button>
+                    <Button val={1} full='pose-btn' onClick={()=> setPose('I')}> I </Button>
+                    <Button val={2} full='pose-btn' onClick={()=> setPose('A')}> A </Button>
                 </div>
             </div>
             <div className={'selection-list'} ref={ref}>

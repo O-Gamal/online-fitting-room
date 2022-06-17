@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect , useState} from 'react'
 import { Group, Text } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE  } from '@mantine/dropzone';
 import Button from '../../utilities/button/Button'
@@ -21,11 +21,14 @@ const dropzoneChildren = () => (
 
 
 export default function DropZone({ className, image, setImage }) {
+
+  const [imgPreview, setImgPreview] = useState('');
+
   return (
     <div>
         {image !== null ? 
       <div className='uploaded-image-container'>
-        <motion.img initial={{opacity: 0}} animate={{opacity: 1}} className='uploaded-image' src={image} alt='uploaded image'/>
+        <motion.img initial={{opacity: 0}} animate={{opacity: 1}} className='uploaded-image' src={imgPreview} alt='uploaded image'/>
         <Button full='remove-btn' onClick={() => setImage(null)}><motion.i initial={{opacity: 0, y: 50}} animate={{opacity: 1, y: 0}} className="material-icons">close</motion.i></Button>
       </div>
       : 
@@ -35,10 +38,17 @@ export default function DropZone({ className, image, setImage }) {
         accept={IMAGE_MIME_TYPE}
         radius={30}
         onDrop={(files) => {
-          setImage(URL.createObjectURL(files[0]));
-        }}
+        //  setImage(URL.createObjectURL(files[0]));
+        console.log(files)
+        const form = new FormData()
+        for(let file of files) form.append('imgs',file )
+        setImage(form);
+        setImgPreview(URL.createObjectURL(files[0]))
+        }
+
+        }
         onReject={(file) => console.log('rejected files', file[0])}
-        multiple={ false }
+        multiple={ true }
       >
       {(status) => dropzoneChildren(status)}
 

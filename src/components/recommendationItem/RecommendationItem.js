@@ -5,34 +5,46 @@ import { OrbitControls } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import './RecommendationItem.scss'
 import { useDispatch, useSelector} from 'react-redux';
-import {setNext} from '../../states/user.js';
+import {setNext, setTransaction} from '../../states/user.js';
 import axios from 'axios';
 
 export default function RecommendationItem({setSize, size}) {
 
   const [recomendedSize, setRecomendedSize] = useState('loading...');
   const [StandardSize, setStandardSize] = useState('loading...');
+  const [pose, setPose] = useState('T');
   const dispatch = useDispatch();
   const {garment, user} = useSelector(state => state.user);
   const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
   useEffect(()=>{
-    axios.post('',{garment, user, pose:'T'})
-    .then((res)=>res.data)
-    axios.post('',{garment, user})
-    .then((res)=>setRecomendedSize(res.data))
-    axios.post('',{garment, user})
-    .then((res)=>setStandardSize(res.data))
+    axios.post('http://localhost:4002/api/sizerecommendation/model',{product_id:garment.product_id, user_id:user.user_id})
+    .then((res)=>{
+      setRecomendedSize(res.data.data.size);
+      setSize(res.data.data.size);
+                })
+    .then(()=>{
+      axios.post('http://localhost:4002/api/smpl/showsmpl',
+      {products_id:[garment.product_id], user_id:user.user_id, pose:'T', sizes:[recomendedSize]})
+      .then((res)=>res.data)
+    })
+    .catch((err)=>console.error(err))
+    // axios.post('',{product_id:garment.product_id, user})
+    // .then((res)=>setStandardSize(res.data))
   },[])
 
-  const changePose = (pose)=>{
-    axios.post('',{garment, user, pose})
-    .then((res)=>res.data)
-  }
+  useEffect(()=>{
+    axios.post('http://localhost:4002/api/smpl/showsmpl',
+    {products_id:[garment.product_id], user_id:user.user_id, pose, sizes:[size]})
+    .then((res)=>res.data) 
+  },[pose, size])
 
   const buyHandler = ()=>{
-    axios.post('http://localhost:4002/api/ratings/buy',{garment, user, size})
+    axios.post('http://localhost:4002/api/ratings/buy',
+    {product_id:garment.product_id, user_id:user.user_id, size})
+    .then(res => {dispatch(setTransaction(res.data.transaction['_id']))})
     .then(()=>dispatch(setNext('Rating')))
+    .catch((err)=>console.error(err))
   }
 
   return (
@@ -43,27 +55,27 @@ export default function RecommendationItem({setSize, size}) {
             <h1>Standard Size: </h1>
             <p>based on size chart of the brand</p>
           </div>
-          <h1>{recomendedSize}</h1>
+          <h1>{StandardSize }</h1>
         </div>
         <div className='size'>
           <div>
             <h1>Recommended Size: </h1>
             <p>based on what similar users buy</p>
           </div>
-          <h1>{StandardSize}</h1>
+          <h1>{recomendedSize}</h1>
         </div>
         <div className='size select-size'>
           <h1>Select Size: </h1>
           <div className='radio-container'>
             {sizes.map((s, index) => 
-                <motion.h1 layout className={ s === size ? 'radio-btn selected' : 'radio-btn'} key={index} onClick={() => setSize(s)}>{s}</motion.h1>
+                <motion.h1 layout className={ s === size ? 'radio-btn selected' : 'radio-btn'} key={index} onClick={() =>{ setSize(s)}}>{s}</motion.h1>
             )}
           </div>
         </div>
 
         <div className='btns-container'>
           <Button full='btn back-btn' onClick={()=> dispatch(setNext('Size Recommendation'))}> Back </Button>
-          <Button full='btn next-btn' onClick={()=> dispatch(setNext('Rating'))}> Buy </Button>
+          <Button full='btn next-btn' onClick={buyHandler}> Buy </Button>
         </div>
       </div>
       <div className='right'>
@@ -77,9 +89,9 @@ export default function RecommendationItem({setSize, size}) {
                     <OrbitControls />
                 </Canvas>
                 <div className='pose-btns'>
-                    <Button  full='pose-btn' onClick={()=> changePose('T')}> T </Button>
-                    <Button  full='pose-btn' onClick={()=> changePose('I')}> I </Button>
-                    <Button  full='pose-btn' onClick={()=> changePose('A')}> A </Button>
+                    <Button  full='pose-btn' onClick={()=> setPose('T')}> T </Button>
+                    <Button  full='pose-btn' onClick={()=> setPose('I')}> I </Button>
+                    <Button  full='pose-btn' onClick={()=> setPose('A')}> A </Button>
                 </div>
             </div>
       </div>

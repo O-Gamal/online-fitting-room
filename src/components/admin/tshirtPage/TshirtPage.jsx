@@ -13,12 +13,14 @@ const TshirtPage = () => {
   const dispatch = useDispatch();
   const {garType} = useSelector((state) => state.admin);
   const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
   const [name, setName] = useState('');
 
   const generateGarment = () => {
-    const data = {type:garType, imgs:[image1,image2], name };
-    axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
+    const data = {garGender, type:garType, name };
+    for(const key in data){
+      image1.set(key,data[key])
+    }
+    axios.post('http://localhost:4002/api/products', image1)
         .then(response => dispatch(setGeneratedGar(response.data)))
         .then(()=>dispatch(setPage(4)))
   }
@@ -30,7 +32,6 @@ const TshirtPage = () => {
           <Input className='TshirtPage-input' placeholder='Name' value={name} onChange={e=>setName(e.target.value)}/>
           <div className="TshirtPage-drops">
             <DropZone image={image1} setImage={setImage1}/>
-            <DropZone image={image2} setImage={setImage2}/>
           </div>
         </div>
         <div className="TshirtPage-btns">

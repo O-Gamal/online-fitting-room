@@ -16,9 +16,13 @@ const OtherPage = () => {
   const {garType} = useSelector((state) => state.admin);
 
   const generateGarment = () => {
-    const data = { color, type:garType, name };
+    const data = { garGender, color, type:garType, name };
     axios.post('http://localhost:4002/api/products', data, {headers: { 'Content-Type': 'multipart/form-data' }})
-        .then(response => dispatch(setGeneratedGar(response.data)))
+        .then(response =>{ 
+          console.log(response.data);
+          dispatch(setGeneratedGar(response.data))
+          
+        })
         .then(()=>dispatch(setPage(4)))
   }
 
@@ -39,7 +43,7 @@ const OtherPage = () => {
         </div>
         <div className="TshirtPage-btns">
             <Button onClick={()=>dispatch(setPage(0))}  pad={12} full='blk'>Back</Button>
-            <Button onClick={()=>dispatch(setPage(4))}  pad={12}>Add</Button>
+            <Button onClick={generateGarment}  pad={12}>Add</Button>
         </div>
     </motion.div>
   )
